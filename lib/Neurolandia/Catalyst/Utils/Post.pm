@@ -1,5 +1,6 @@
 package Neurolandia::Catalyst::Utils::Post;
 use Moose;
+use Try::Tiny;
 use namespace::autoclean;
 
 has 'current_post_model' => (
@@ -11,6 +12,8 @@ has 'current_post_model' => (
 sub get_model_object_by_id {
     my ( $self, $c, $id ) = @_;
 
+    Catalyst::Exception->throw('Object ID is not of type integer!')
+        if $id !~ /[0-9]+/;
     return $c->model( $self->current_post_model )->find( { id => $id } );
 }
 

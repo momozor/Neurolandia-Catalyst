@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More;
+use Test::More tests => 3;
 
 use Catalyst::Test 'Neurolandia::Catalyst';
 

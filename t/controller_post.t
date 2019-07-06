@@ -1,6 +1,6 @@
 use strict;
 use warnings;
-use Test::More;
+use Test::More tests => 5;
 
 use Catalyst::Test 'Neurolandia::Catalyst';
 BEGIN { use_ok('Neurolandia::Catalyst::Controller::Post') }
@@ -10,4 +10,4 @@ ok( request('/post/create_form')->is_success );
 ok( request('/post/show/1')->is_success );
 ok( request('/post/edit_form/1')->is_success );
 
-done_testing();
+done_testing(5);
