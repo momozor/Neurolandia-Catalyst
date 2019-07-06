@@ -19,7 +19,6 @@ use Catalyst::Runtime 5.80;
 #     StackTrace: will show error and stacktrace output in browser
 
 use Catalyst qw/
-    -Debug
     ConfigLoader
     Static::Simple
 
