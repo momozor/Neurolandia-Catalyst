@@ -13,6 +13,10 @@ from CPAN (or now, MetaCPAN)
 * cpanm
 * (Optional) Carton
 
+Installing Dependencies
+-----------------------
+Simply run `cpanm --installdeps .` or if you have Carton, run `carton install`.
+
 Testing
 -------
 Neurolandia::Catalyst (NC) development sees automated testing as one of the
