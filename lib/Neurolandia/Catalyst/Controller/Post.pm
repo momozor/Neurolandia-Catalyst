@@ -21,30 +21,28 @@ Catalyst Controller.
 =cut
 
 has 'post_util' => (
-    is => 'ro',
-    isa => 'Neurolandia::Catalyst::Utils::Post',
+    is      => 'ro',
+    isa     => 'Neurolandia::Catalyst::Utils::Post',
     default => sub {
-        my ( $self ) = @_;
+        my ($self) = @_;
 
         return Neurolandia::Catalyst::Utils::Post->new;
     },
 );
 
-sub index :Path :Args(0) {
+sub index : Path : Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->stash(
-        {
-            template => 'post/list.tt',
-            posts    => [ $c->model( $self->post_util->current_post_model )->all ]
-        }
-    );
+    $c->stash( {
+        template => 'post/list.tt',
+        posts    => [ $c->model( $self->post_util->current_post_model )->all ]
+    } );
 }
 
 sub show : Chained('/') : PathPart('post/show') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
-    my $post = $self->post_util->get_model_object_by_id($c, $id);
+    my $post = $self->post_util->get_model_object_by_id( $c, $id );
 
     $c->stash( { template => 'post/show.tt', post => $post } );
 }
@@ -62,13 +60,11 @@ sub create : Local {
     my $content = $c->request->params->{content};
     my $author  = $c->request->params->{author};
 
-    my $post = $c->model( $self->post_util->current_post_model )->create(
-        {
-            title   => $title,
-            content => $content,
-            author  => $author,
-        }
-    );
+    my $post = $c->model( $self->post_util->current_post_model )->create( {
+        title   => $title,
+        content => $content,
+        author  => $author,
+    } );
 
     $c->stash( { template => 'post/create_done.tt', post => $post } );
 }
@@ -76,7 +72,7 @@ sub create : Local {
 sub edit_form : Chained('/') : PathPart('post/edit_form') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
-    my $post = $self->post_util->get_model_object_by_id($c, $id);
+    my $post = $self->post_util->get_model_object_by_id( $c, $id );
 
     $c->stash( { template => 'post/edit_form.tt', post => $post } );
 }
@@ -84,12 +80,12 @@ sub edit_form : Chained('/') : PathPart('post/edit_form') : Args(1) {
 sub edit : Local {
     my ( $self, $c ) = @_;
 
-    my $id = $c->request->params->{id};
+    my $id      = $c->request->params->{id};
     my $title   = $c->request->params->{title};
     my $content = $c->request->params->{content};
     my $author  = $c->request->params->{author};
 
-    my $post = $self->post_util->get_model_object_by_id($c, $id);
+    my $post = $self->post_util->get_model_object_by_id( $c, $id );
     $post->title($title);
     $post->content($content);
     $post->author($author);
@@ -101,7 +97,7 @@ sub edit : Local {
 sub delete : Chained('/') : PathPart('post/delete') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
-    $self->post_util->get_model_object_by_id($c, $id);
+    $self->post_util->get_model_object_by_id( $c, $id );
 
     $c->stash( { template => 'post/delete_done.tt' } );
 }

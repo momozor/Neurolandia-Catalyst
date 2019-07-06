@@ -2,7 +2,6 @@ use strict;
 use warnings;
 use Test::More;
 
-
 BEGIN { use_ok 'Neurolandia::Catalyst::View::HTML' }
 
 done_testing();

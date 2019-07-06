@@ -22,9 +22,9 @@ use Catalyst qw/
     -Debug
     ConfigLoader
     Static::Simple
-    
+
     StackTrace
-/;
+    /;
 
 extends 'Catalyst';
 
@@ -41,9 +41,10 @@ our $VERSION = '0.0.1';
 
 __PACKAGE__->config(
     name => 'Neurolandia::Catalyst',
+
     # Disable deprecated behavior needed by old applications
     disable_component_resolution_regex_fallback => 1,
-    enable_catalyst_header => 1, # Send X-Catalyst header
+    enable_catalyst_header                      => 1, # Send X-Catalyst header
 );
 
 # Start the application

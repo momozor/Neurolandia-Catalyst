@@ -7,7 +7,7 @@ BEGIN { extends 'Neurolandia::Catalyst::Controller' }
 # Sets the actions in this controller to be registered with no prefix
 # so they function identically to actions created in MyApp.pm
 #
-__PACKAGE__->config(namespace => '');
+__PACKAGE__->config( namespace => '' );
 
 =encoding utf-8
 
@@ -27,16 +27,16 @@ The root page (/)
 
 =cut
 
-sub index :Path :Args(0) {
+sub index : Path : Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->stash( {template => 'home.tt'} );
+    $c->stash( { template => 'home.tt' } );
 }
 
-sub about :Local {
+sub about : Local {
     my ( $self, $c ) = @_;
 
-    $c->stash( {template => 'about.tt'} );
+    $c->stash( { template => 'about.tt' } );
 }
 
 =head2 default
@@ -45,9 +45,9 @@ Standard 404 error page
 
 =cut
 
-sub default :Path {
+sub default : Path {
     my ( $self, $c ) = @_;
-    $c->response->body( 'Page not found' );
+    $c->response->body('Page not found');
     $c->response->status(404);
 }
 
@@ -57,7 +57,7 @@ Attempt to render a view, if needed.
 
 =cut
 
-sub end : ActionClass('RenderView') {}
+sub end : ActionClass('RenderView') { }
 
 =head1 AUTHOR
 
