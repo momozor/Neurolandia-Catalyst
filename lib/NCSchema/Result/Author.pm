@@ -1,12 +1,12 @@
 use utf8;
-package NCSchema::Result::Post;
+package NCSchema::Result::Author;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
 
 =head1 NAME
 
-NCSchema::Result::Post
+NCSchema::Result::Author
 
 =cut
 
@@ -30,11 +30,11 @@ extends 'DBIx::Class::Core';
 
 __PACKAGE__->load_components("InflateColumn::DateTime");
 
-=head1 TABLE: C<post>
+=head1 TABLE: C<author>
 
 =cut
 
-__PACKAGE__->table("post");
+__PACKAGE__->table("author");
 
 =head1 ACCESSORS
 
@@ -44,35 +44,19 @@ __PACKAGE__->table("post");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 title
+=head2 name
 
   data_type: 'varchar'
   is_nullable: 0
   size: 255
-
-=head2 content
-
-  data_type: 'varchar'
-  is_nullable: 0
-  size: 255
-
-=head2 author_id
-
-  data_type: 'integer'
-  is_foreign_key: 1
-  is_nullable: 1
 
 =cut
 
 __PACKAGE__->add_columns(
   "id",
   { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "title",
+  "name",
   { data_type => "varchar", is_nullable => 0, size => 255 },
-  "content",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
-  "author_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -89,29 +73,24 @@ __PACKAGE__->set_primary_key("id");
 
 =head1 RELATIONS
 
-=head2 author
+=head2 posts
 
-Type: belongs_to
+Type: has_many
 
-Related object: L<NCSchema::Result::Author>
+Related object: L<NCSchema::Result::Post>
 
 =cut
 
-__PACKAGE__->belongs_to(
-  "author",
-  "NCSchema::Result::Author",
-  { id => "author_id" },
-  {
-    is_deferrable => 0,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
+__PACKAGE__->has_many(
+  "posts",
+  "NCSchema::Result::Post",
+  { "foreign.author_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
 );
 
 
 # Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-07-06 23:02:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:gIrfewboJRK9953GzuhJFg
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:S3Rz+izq60xE3P7qwCjoCg
 
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
