@@ -9,9 +9,9 @@ has 'current_post_model' => (
 );
 
 sub get_model_object_by_id {
-    my ( $self, $c, $model, $id ) = @_;
+    my ( $self, $c, $id ) = @_;
 
-    return $c->model($model)->find({id => $id});
+    return $c->model($self->current_post_model)->find({id => $id});
 }
 
 __PACKAGE__->meta->make_immutable;

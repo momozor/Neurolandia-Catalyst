@@ -45,9 +45,7 @@ sub index : Path : Args(0) {
 sub show : Chained('/') : PathPart('post/show') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
-    my $post = $self->post_util->get_model_object_by_id($c,
-                                                        $self->post_util->current_post_model,
-                                                        $id);
+    my $post = $self->post_util->get_model_object_by_id($c, $id);
 
     $c->stash( { template => 'post/show.tt', post => $post } );
 }
@@ -79,10 +77,7 @@ sub create : Local {
 sub edit_form : Chained('/') : PathPart('post/edit_form') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
-    my $post = $self->post_util->get_model_object_by_id($c,
-                                                  $self->post_util->current_post_model,
-                                                  $id
-    );
+    my $post = $self->post_util->get_model_object_by_id($c, $id);
 
     $c->stash( { template => 'post/edit_form.tt', post => $post } );
 }
@@ -95,9 +90,7 @@ sub edit : Local {
     my $content = $c->request->params->{content};
     my $author  = $c->request->params->{author};
 
-    my $post = $self->post_util->get_model_object_by_id($c,
-                                                  $self->post_util->current_post_model,
-                                                  $id);
+    my $post = $self->post_util->get_model_object_by_id($c, $id);
     $post->title($title);
     $post->content($content);
     $post->author($author);
@@ -109,9 +102,7 @@ sub edit : Local {
 sub delete : Chained('/') : PathPart('post/delete') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
-    $self->post_util->get_model_object_by_id($c,
-                                       $self->post_util->current_post_model,
-                                       $id);
+    $self->post_util->get_model_object_by_id($c, $id);
 
     $c->stash( { template => 'post/delete_done.tt' } );
 }
