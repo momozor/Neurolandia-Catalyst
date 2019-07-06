@@ -34,7 +34,7 @@ sub index : Path : Args(0) {
     my ( $self, $c ) = @_;
 
     $c->stash( {
-        template => 'post/list.tt',
+        template => 'post/list.html',
         posts    => [ $c->model( $self->post_util->current_post_model )->all ]
     } );
 }
@@ -44,13 +44,13 @@ sub show : Chained('/') : PathPart('post/show') : Args(1) {
 
     my $post = $self->post_util->get_model_object_by_id( $c, $id );
 
-    $c->stash( { template => 'post/show.tt', post => $post } );
+    $c->stash( { template => 'post/show.html', post => $post } );
 }
 
 sub create_form : Local {
     my ( $self, $c ) = @_;
 
-    $c->stash( { template => 'post/create_form.tt' } );
+    $c->stash( { template => 'post/create_form.html' } );
 }
 
 sub create : Local {
@@ -66,7 +66,7 @@ sub create : Local {
         author  => $author,
     } );
 
-    $c->stash( { template => 'post/create_done.tt', post => $post } );
+    $c->stash( { template => 'post/create_done.html', post => $post } );
 }
 
 sub edit_form : Chained('/') : PathPart('post/edit_form') : Args(1) {
@@ -74,7 +74,7 @@ sub edit_form : Chained('/') : PathPart('post/edit_form') : Args(1) {
 
     my $post = $self->post_util->get_model_object_by_id( $c, $id );
 
-    $c->stash( { template => 'post/edit_form.tt', post => $post } );
+    $c->stash( { template => 'post/edit_form.html', post => $post } );
 }
 
 sub edit : Local {
@@ -91,7 +91,7 @@ sub edit : Local {
     $post->author($author);
     $post->update;
 
-    $c->stash( { template => 'post/edit_done.tt', post => $post } );
+    $c->stash( { template => 'post/edit_done.html', post => $post } );
 }
 
 sub delete : Chained('/') : PathPart('post/delete') : Args(1) {
@@ -99,7 +99,7 @@ sub delete : Chained('/') : PathPart('post/delete') : Args(1) {
 
     $self->post_util->get_model_object_by_id( $c, $id );
 
-    $c->stash( { template => 'post/delete_done.tt' } );
+    $c->stash( { template => 'post/delete_done.html' } );
 }
 
 =encoding utf8

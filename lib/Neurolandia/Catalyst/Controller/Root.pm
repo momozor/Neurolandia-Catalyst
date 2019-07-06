@@ -30,13 +30,13 @@ The root page (/)
 sub index : Path : Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->stash( { template => 'home.tt' } );
+    $c->stash( { template => 'home.html' } );
 }
 
 sub about : Local {
     my ( $self, $c ) = @_;
 
-    $c->stash( { template => 'about.tt' } );
+    $c->stash( { template => 'about.html' } );
 }
 
 =head2 default
