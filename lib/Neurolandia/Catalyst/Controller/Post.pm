@@ -1,9 +1,8 @@
 package Neurolandia::Catalyst::Controller::Post;
 use Moose;
 use Neurolandia::Catalyst::Utils::Post;
-use namespace::autoclean;
 
-BEGIN { extends 'Catalyst::Controller'; }
+BEGIN { extends 'Neurolandia::Catalyst::Controller' }
 
 =head1 NAME
 
@@ -31,7 +30,7 @@ has 'post_util' => (
     },
 );
 
-sub index : Path : Args(0) {
+sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
     $c->stash(
