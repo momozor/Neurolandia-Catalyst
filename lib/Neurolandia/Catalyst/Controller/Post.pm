@@ -4,22 +4,6 @@ use Neurolandia::Catalyst::Utils::Post;
 
 BEGIN { extends 'Neurolandia::Catalyst::Controller' }
 
-=head1 NAME
-
-Neurolandia::Catalyst::Controller::Post - Catalyst Controller
-
-=head1 DESCRIPTION
-
-Catalyst Controller.
-
-=head1 METHODS
-
-=cut
-
-=head2 index
-
-=cut
-
 has 'post_util' => (
     is      => 'ro',
     isa     => 'Neurolandia::Catalyst::Utils::Post',
@@ -101,19 +85,6 @@ sub delete : Chained('/') : PathPart('post/delete') : Args(1) {
 
     $c->stash( { template => 'post/delete_done.html' } );
 }
-
-=encoding utf8
-
-=head1 AUTHOR
-
-momozor,,,
-
-=head1 LICENSE
-
-This library is free software. You can redistribute it and/or modify
-it under the same terms as Perl itself.
-
-=cut
 
 __PACKAGE__->meta->make_immutable;
 
