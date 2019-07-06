@@ -17,11 +17,9 @@ has 'post_util' => (
 sub index : Path : Args(0) {
     my ( $self, $c ) = @_;
 
-    my @posts = [ $c->model( $self->post_util->current_post_model )->all ];
-
     $c->stash( {
         template => 'post/list.html',
-        posts    => @posts,
+        posts    => [ $c->model( $self->post_util->current_post_model )->all ]
     } );
 }
 
