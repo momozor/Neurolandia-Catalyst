@@ -10,4 +10,4 @@ ok( request('/post/create_form')->is_success );
 ok( request('/post/show/1')->is_success );
 ok( request('/post/edit_form/1')->is_success );
 
-done_testing(5);
+done_testing();
