@@ -42,12 +42,10 @@ sub create : Local {
 
     my $title   = $c->request->params->{title};
     my $content = $c->request->params->{content};
-    my $author  = $c->request->params->{author};
 
     my $post = $c->model( $self->post_util->current_post_model )->create( {
         title   => $title,
         content => $content,
-        author  => $author,
     } );
 
     $c->stash( { template => 'post/create_done.html', post => $post } );
@@ -67,12 +65,10 @@ sub edit : Local {
     my $id      = $c->request->params->{id};
     my $title   = $c->request->params->{title};
     my $content = $c->request->params->{content};
-    my $author  = $c->request->params->{author};
 
     my $post = $self->post_util->get_model_object_by_id( $c, $id );
     $post->title($title);
     $post->content($content);
-    $post->author($author);
     $post->update;
 
     $c->stash( { template => 'post/edit_done.html', post => $post } );
