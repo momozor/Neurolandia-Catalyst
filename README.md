@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/momozor/Neurolandia-Catalyst.svg?branch=master)](https://travis-ci.org/momozor/Neurolandia-Catalyst)
 Neurolandia::Catalyst
 ---------------------
 Neurolandia::Catalyst is a revamped version of Neurolandia Mojolicious that I made.
