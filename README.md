@@ -1,4 +1,8 @@
 [![Build Status](https://travis-ci.org/momozor/Neurolandia-Catalyst.svg?branch=master)](https://travis-ci.org/momozor/Neurolandia-Catalyst)
+[![Kritika Analysis Status](https://kritika.io/users/faraco/repos/9904562727444606/heads/master/status.svg)](https://kritika.io/users/faraco/repos/9904562727444606/heads/master/)
+[![Kritika Analysis Status](https://kritika.io/users/faraco/repos/9904562727444606/heads/master/status.svg?type=coverage)](https://kritika.io/users/faraco/repos/9904562727444606/heads/master/)
+[![Kritika Analysis Status](https://kritika.io/users/faraco/repos/9904562727444606/heads/master/status.svg?type=deps)](https://kritika.io/users/faraco/repos/9904562727444606/heads/master/)
+
 Neurolandia::Catalyst
 ---------------------
 Neurolandia::Catalyst is a revamped version of Neurolandia Mojolicious that I made.
