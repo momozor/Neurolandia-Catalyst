@@ -13,3 +13,4 @@ requires 'Code::TidyAll';
 requires 'Test::Code::TidyAll';
 requires 'Code::TidyAll::Plugin::PerlTidy';
 requires 'Code::TidyAll::Plugin::Test::Vars';
+requires 'MooseX::Getopt';
