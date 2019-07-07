@@ -5,6 +5,7 @@ argv = --profile=$ROOT/.perltidyrc
 
 [SortLines]
 select = .gitignore
+select = var/.gitignore
 
 [Test::Vars]
 select = {lib,t,script}/**/*.{pl,pm}
