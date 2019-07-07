@@ -1,20 +1,27 @@
 language: perl
 perl:
+    - "5.30"
+    - "5.28"
     - "5.26"
     - "5.24"
     - "5.22"
+    - "5.20"
+    - "5.18"
+    - "5.16"
     - "5.14"
+    - "5.12"
+    - "5.10"
 
 install:
     - sudo apt install sqlite3
     - cpanm --quiet --installdeps --notest .
+    - carton install
 
 script:
     - "perl ./script/neurolandia_catalyst_migrate.pl"
     - "perl ./script/neurolandia_catalyst_test_more.pl --verbose"
-    - "carton install"
     - "perl ./script/neurolandia_catalyst_test_more.pl --verbose --use_carton"
-    - "carton exec perl ./script/neurolandia_catalyst_test_more.pl --verbose --use-carton"
+    - "carton exec perl ./script/neurolandia_catalyst_test_more.pl --verbose --use_carton"
 
 notifications:
     email: false
