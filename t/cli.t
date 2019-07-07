@@ -13,6 +13,6 @@ my $cli = new_ok('Neurolandia::Catalyst::CLI');
 # but you'll need to include Carton as a dependency too.
 # Using carton from carton eh?
 # TODO skip this test if --use_carton is invoked
-#is( $cli->carton_execute('perl -v'), 1 );
+is( $cli->carton_execute('perl -v'), 1 );
 
 done_testing();
