@@ -6,13 +6,14 @@ BEGIN {
     use_ok('Neurolandia::Catalyst::CLI::Testing');
 }
 
-my $cli = Neurolandia::Catalyst::CLI->new( test_path => './t' );
+my $cli = Neurolandia::Catalyst::CLI::Testing->new( test_path => './t' );
 my $cli2
-    = Neurolandia::Catalyst::CLI->new( test_path => 'not_exist_test_dir' );
+    = Neurolandia::Catalyst::CLI::Testing->new(
+    test_path => 'not_exist_test_dir' );
 
-    #is( $cli->is_test_path_correct, 1 );
+is( $cli->is_test_path_correct, 1 );
 
-#isnt( $cli2->is_test_path_correct, 1 );
+isnt( $cli2->is_test_path_correct, 1 );
 
 # works fine without --use_carton
 # but you'll need to include Carton as a dependency too.
