@@ -12,6 +12,7 @@ requires 'Code::TidyAll::Plugin::PerlTidy';
 requires 'Code::TidyAll::Plugin::Test::Vars';
 requires 'DBD::SQLite';
 requires 'MooseX::Getopt';
+requires 'MooseX::NonMoose';
 requires 'Perl::Tidy';
 requires 'Test::Code::TidyAll';
 requires 'Test::WWW::Mechanize::Catalyst';
