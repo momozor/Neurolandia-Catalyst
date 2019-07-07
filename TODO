@@ -6,4 +6,3 @@ instead of using global $ENV{}.
     - a user model would be better, right?
 * Finish authentication operations.
 * Settle front-end design (uh,..urgh)
-
