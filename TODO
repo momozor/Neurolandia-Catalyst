@@ -1,0 +1,2 @@
+* Move testing specific code into Neurolandia::Catalyst::CLI::Testing.
+    - CLI is not responsible for testing behaviors.
