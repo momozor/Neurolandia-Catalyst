@@ -7,11 +7,14 @@ perl:
 
 install:
     - sudo apt install sqlite3
-    - cpanm --installdeps --notest .
+    - cpanm --quiet --installdeps --notest .
 
 script:
     - "perl ./script/neurolandia_catalyst_migrate.pl"
     - "perl ./script/neurolandia_catalyst_test_more.pl --verbose"
+    - "carton install"
+    - "perl ./script/neurolandia_catalyst_test_more.pl --verbose --use_carton"
+    - "carton exec perl ./script/neurolandia_catalyst_test_more.pl --verbose --use-carton"
 
 notifications:
     email: false
