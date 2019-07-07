@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/momozor/Neurolandia-Catalyst.svg?branch=master)](https://travis-ci.org/momozor/Neurolandia-Catalyst)
+[![codecov](https://codecov.io/gh/momozor/Neurolandia-Catalyst/branch/master/graph/badge.svg)](https://codecov.io/gh/momozor/Neurolandia-Catalyst)
 
 Neurolandia::Catalyst
 ---------------------
