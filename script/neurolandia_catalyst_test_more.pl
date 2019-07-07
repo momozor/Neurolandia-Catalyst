@@ -3,4 +3,10 @@
 use strict;
 use warnings;
 
-system('prove -wl ./t');
+my $option = $ARGV[0] ||= '';
+if ( $option eq '-v' || $option eq '--verbose' ) {
+    system('prove -wlv ./t');
+}
+else {
+    system('prove -wl ./t');
+}

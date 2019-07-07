@@ -5,7 +5,7 @@ BEGIN {
 }
 
 use Catalyst::ScriptRunner;
-Catalyst::ScriptRunner->run('Neurolandia::Catalyst', 'Server');
+Catalyst::ScriptRunner->run( 'Neurolandia::Catalyst', 'Server' );
 
 1;
 

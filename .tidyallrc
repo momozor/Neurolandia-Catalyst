@@ -1,5 +1,5 @@
 [PerlTidy]
-select = {bin,lib,t}/**/*.{pl,pm,t,psgi}
+select = {bin,lib,t,script}/**/*.{pl,pm,t,psgi}
 select = app.psgi
 argv = --profile=$ROOT/.perltidyrc
 
@@ -7,5 +7,5 @@ argv = --profile=$ROOT/.perltidyrc
 select = .gitignore
 
 [Test::Vars]
-select = {lib,t}/**/*.pm
+select = {lib,t,script}/**/*.{pl,pm}
 ignore = lib/Neurolandia/Catalyst/View/HTML.pm

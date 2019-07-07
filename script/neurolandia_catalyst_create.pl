@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Catalyst::ScriptRunner;
-Catalyst::ScriptRunner->run('Neurolandia::Catalyst', 'Create');
+Catalyst::ScriptRunner->run( 'Neurolandia::Catalyst', 'Create' );
 
 1;
 

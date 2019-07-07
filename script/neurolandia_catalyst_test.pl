@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 use Catalyst::ScriptRunner;
-Catalyst::ScriptRunner->run('Neurolandia::Catalyst', 'Test');
+Catalyst::ScriptRunner->run( 'Neurolandia::Catalyst', 'Test' );
 
 1;
 
