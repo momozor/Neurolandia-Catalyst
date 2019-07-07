@@ -11,10 +11,9 @@ my $user            = $ENV{NEUROLANDIA_USER} ||= '';
 my $password        = $ENV{NEUROLANDIA_PASSWORD} ||= '';
 
 if ( $user eq '' || $password eq '' ) {
-    if ( -f $sqlite_db_path ) {
-        die
-            "sqlite database in ./var/ already exists! Remove it manually to continue!\n";
-    }
+    die
+        "sqlite database in ./var/ already exists! Please remove it manually to continue!\n"
+        if -f $sqlite_db_path;
     mkdir($sqlite_var_path) if ( !-d $sqlite_var_path );
     system("sqlite3 $sqlite_db_path < $sql_file_path");
 }
