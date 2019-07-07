@@ -23,7 +23,7 @@ script:
     - "perl ./script/neurolandia_catalyst_test_more.pl --verbose --use_carton"
     - "carton exec perl ./script/neurolandia_catalyst_test_more.pl --verbose --use_carton"
     - cover -delete
-    - HARNESS_PERL_SWITCHES="-MDevel::Cover=+ignore,^local/|^t/" prove -r t
+    - HARNESS_PERL_SWITCHES="-MDevel::Cover=+ignore,^local/|^t/" ./script/neurolandia_catalyst_test_more"
 
 after_success:
     - cover -report codecov
