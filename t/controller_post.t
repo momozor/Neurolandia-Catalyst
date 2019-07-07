@@ -24,9 +24,16 @@ $ua1->submit_form(
         content => 'Why it survives?',
     }
 );
+$ua1->title_is('Creation Successful | Neurolandia');
 $ua1->get_ok( $root . '/post' );
 $ua1->content_contains('The Battleship');
+$ua1->content_contains('Why it survives?');
+
 $ua1->get_ok( $root . '/post/delete/3' );
+$ua1->title_is('Deletion Successful | Neurolandia');
+$ua1->get_ok( $root . '/post' );
+$ua1->content_lacks('The Battleship');
+$ua1->content_lacks('Why it survives?');
 
 $ua1->get_ok( $root . '/post/show/1' );
 $ua1->title_is('SICP | Neurolandia');
@@ -39,6 +46,7 @@ $ua1->submit_form(
         content => 'Why Climate Change is now a Climate CRISIS?-edited',
     }
 );
+$ua1->title_is('Edit Successful | Neurolandia');
 
 $ua1->get_ok( $root . '/post' );
 $ua1->content_contains('The Greenpeace-edited');
@@ -50,6 +58,8 @@ $ua1->submit_form(
         content => 'Why Climate Change is now a Climate CRISIS?',
     }
 );
+$ua1->title_is('Edit Successful | Neurolandia');
+
 $ua1->get_ok( $root . '/post' );
 $ua1->content_contains('The Greenpeace');
 $ua1->content_contains('Why Climate Change is now a Climate CRISIS?');
