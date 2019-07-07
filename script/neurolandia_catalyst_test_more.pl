@@ -5,18 +5,30 @@ use warnings;
 use lib 'lib';
 use Neurolandia::Catalyst::CLI;
 
-my $app = Neurolandia::Catalyst::CLI->new_with_options;
+my $app             = Neurolandia::Catalyst::CLI->new_with_options;
+my $no_verbose_test = 'prove -wl ';
+my $verbose_test    = 'prove -wlv ';
 
-if ( $app->is_test_path_correct ) {
-
+if ( $app->is_test_path_correct && $app->use_carton ) {
     if ( $app->verbose ) {
-        system( 'prove -wlv ' . $app->test_dir_path );
+        $app->carton_execute( $verbose_test . $app->test_path );
     }
     else {
-        system( 'prove -wl ' . $app->test_dir_path );
+        $app->carton_execute( $no_verbose_test . $app->test_path );
     }
 }
-else {
+
+elsif ( $app->is_test_path_correct && !$app->use_carton ) {
+    if ( $app->verbose ) {
+        system( $verbose_test . $app->test_path );
+    }
+    else {
+        system( $no_verbose_test . $app->test_path );
+    }
+}
+
+elsif ( !$app->is_test_path_correct ) {
+
    # TODO throw exception here or in Neurolandia::Catalyst::CLI->test_dir_path
     die(      "[ERROR]: Test directory doesn't exist! "
             . "Please make sure you use correst test directory path.\n" );
