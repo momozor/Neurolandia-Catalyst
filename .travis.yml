@@ -15,12 +15,18 @@ install:
     - sudo apt install sqlite3
     - cpanm --quiet --installdeps --notest .
     - carton install
+    - cpanm --quiet --notest --skip-satisfied Devel::Cover::Report::Codecov
 
 script:
     - "perl ./script/neurolandia_catalyst_migrate.pl"
     - "perl ./script/neurolandia_catalyst_test_more.pl --verbose"
     - "perl ./script/neurolandia_catalyst_test_more.pl --verbose --use_carton"
     - "carton exec perl ./script/neurolandia_catalyst_test_more.pl --verbose --use_carton"
+    - cover -delete
+    - HARNESS_PERL_SWITCHES="-MDevel::Cover=+ignore,^local/|^t/" prove -r t
+
+after_success:
+    - cover -report codecov
 
 notifications:
     email: false
