@@ -17,7 +17,6 @@ $ua1->content_contains('The Greenpeace');
 
 $ua1->get_ok( $root . '/post/create_form' );
 $ua1->title_is('Creation Form | Neurolandia');
-
 $ua1->submit_form(
     fields => {
         title   => 'The Battleship',
