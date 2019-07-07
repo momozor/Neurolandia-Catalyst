@@ -29,8 +29,8 @@ elsif ( $app->is_test_path_correct && !$app->use_carton ) {
 
 elsif ( !$app->is_test_path_correct ) {
 
-   # TODO throw exception here or in Neurolandia::Catalyst::CLI->test_dir_path
-    die(      "[ERROR]: Test directory doesn't exist! "
+    # TODO throw exception here or in Neurolandia::Catalyst::CLI->test_path
+    die(      "[ERROR]: Test directory or file path doesn't exist! "
             . "Please make sure you use correct test directory or file path.\n"
     );
 }

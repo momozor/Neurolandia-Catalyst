@@ -1,7 +1,9 @@
-* Make an exception class for CLI::Testing->is_test_path_correct
+* Make an exception class for CLI::Testing->is_test_path_correct and CLI->carton_execute
 * Make migrate helper script to be able to accept db configs as cli parameters
 instead of using global $ENV{}.
 * Change author class into user class
     - author has a password and email address? doesn't make a damn sense.
     - a user model would be better, right?
-* Finish authentication.
+* Finish authentication operations.
+* Settle front-end design (uh,..urgh)
+
