@@ -7,7 +7,7 @@ BEGIN {
     use_ok('Neurolandia::Catalyst::Controller::Post');
 }
 
-my $root = 'http://127.0.0.1:3000';
+my $root = 'http://localhost:3000';
 my $ua1  = Test::WWW::Mechanize::Catalyst->new;
 
 $ua1->get_ok( $root . '/post' );
