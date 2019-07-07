@@ -3,9 +3,9 @@
 use strict;
 use warnings;
 use lib 'lib';
-use Neurolandia::Catalyst::CLI;
+use Neurolandia::Catalyst::CLI::Testing;
 
-my $app             = Neurolandia::Catalyst::CLI->new_with_options;
+my $app             = Neurolandia::Catalyst::CLI::Testing->new_with_options;
 my $no_verbose_test = 'prove -wl ';
 my $verbose_test    = 'prove -wlv ';
 
