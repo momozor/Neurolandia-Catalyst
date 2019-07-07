@@ -1,2 +1,1 @@
-* Move testing specific code into Neurolandia::Catalyst::CLI::Testing.
-    - CLI is not responsible for testing behaviors.
+* Make an exception class for CLI::Testing->is_test_path_correct
