@@ -7,7 +7,7 @@ BEGIN {
     use_ok('Neurolandia::Catalyst::CLI');
 }
 
-my $cli = Neurolandia::Catalyst::CLI->new;
+my $cli = new_ok('Neurolandia::Catalyst::CLI');
 
 # works fine without --use_carton
 # but you'll need to include Carton as a dependency too.
