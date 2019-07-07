@@ -7,7 +7,7 @@ perl:
 
 install:
     - sudo apt install sqlite3
-    - cpanm -v --installdeps --notest .
+    - cpanm --installdeps --notest .
 
 script:
     - "perl ./script/neurolandia_catalyst_migrate.pl"
