@@ -31,5 +31,5 @@ elsif ( !$app->is_test_path_correct ) {
 
    # TODO throw exception here or in Neurolandia::Catalyst::CLI->test_dir_path
     die(      "[ERROR]: Test directory doesn't exist! "
-            . "Please make sure you use correst test directory path.\n" );
+            . "Please make sure you use correct test directory or file path.\n" );
 }
