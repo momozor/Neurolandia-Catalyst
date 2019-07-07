@@ -16,6 +16,6 @@ if ( $user eq '' || $password eq '' ) {
     system("sqlite3 $sqlite_db_path < ./sql/NCSchema.sql");
 }
 system(
-    "./script/neurolandia_catalyst_create.pl model NCModel DBIC::Schema NCSchema create=static '$dsn' on_connect_do='PRAGMA foreign_keys = ON'"
-);
+    "./script/neurolandia_catalyst_create.pl model NCModel DBIC::Schema NCSchema "
+        . "create=static '$dsn' on_connect_do='PRAGMA foreign_keys = ON'" );
 
