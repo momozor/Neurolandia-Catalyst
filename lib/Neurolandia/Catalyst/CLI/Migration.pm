@@ -46,6 +46,7 @@ sub migrate_schema_and_model {
     my ($self) = @_;
     my $create_helper_script_path = './script/neurolandia_catalyst_create.pl';
     my $full_sqlite_dsn = $self->_sqlite_dsn . $self->sqlite_db_path;
+
     if ( $self->migrate != 0 ) {
         return 1
             if system( 'perl '
