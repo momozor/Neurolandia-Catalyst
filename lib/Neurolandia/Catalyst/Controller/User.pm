@@ -33,6 +33,13 @@ sub login : Local {
     }
 }
 
+sub logout : Local {
+    my ( $self, $c ) = @_;
+
+    $c->logout;
+    $c->response->redirect( $c->uri_for('/') );
+}
+
 __PACKAGE__->meta->make_immutable;
 
 1;
