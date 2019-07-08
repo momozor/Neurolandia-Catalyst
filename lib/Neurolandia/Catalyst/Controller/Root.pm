@@ -48,9 +48,9 @@ sub auto : Private {
 sub index : Path : Args(0) {
     my ( $self, $c ) = @_;
 
-        $c->stash( {
+    $c->stash( {
         template => 'home.html',
-        posts => [ $c->model('NCModel::Post')->all ],
+        posts    => [ $c->model('NCModel::Post')->all ],
     } );
 }
 

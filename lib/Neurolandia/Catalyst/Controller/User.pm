@@ -49,7 +49,8 @@ sub logout : Local {
     my ( $self, $c ) = @_;
 
     $c->logout;
-    $c->response->redirect( $c->uri_for($c->controller('Root')->action_for('index')) );
+    $c->response->redirect( $c->uri_for(
+        $c->controller('Root')->action_for('index') ) );
 }
 
 __PACKAGE__->meta->make_immutable;

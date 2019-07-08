@@ -10,8 +10,8 @@ BEGIN {
 my $root = 'http://localhost:3000';
 my $ua1  = Test::WWW::Mechanize::Catalyst->new;
 
-$ua1->get_ok( $root . '/post' );
-$ua1->title_is('Posts Lists | Neurolandia');
+$ua1->get_ok( $root . '/' );
+$ua1->title_is('Home | Neurolandia');
 $ua1->content_contains('SICP');
 $ua1->content_contains('The Greenpeace');
 
@@ -34,13 +34,13 @@ $ua1->submit_form(
     }
 );
 $ua1->title_is('Creation Successful | Neurolandia');
-$ua1->get_ok( $root . '/post' );
+$ua1->get_ok( $root . '/' );
 $ua1->content_contains('The Battleship');
 $ua1->content_contains('Why it survives?');
 
 $ua1->get_ok( $root . '/post/delete/3' );
 $ua1->title_is('Deletion Successful | Neurolandia');
-$ua1->get_ok( $root . '/post' );
+$ua1->get_ok( $root . '/' );
 $ua1->content_lacks('The Battleship');
 $ua1->content_lacks('Why it survives?');
 
@@ -57,7 +57,7 @@ $ua1->submit_form(
 );
 $ua1->title_is('Edit Successful | Neurolandia');
 
-$ua1->get_ok( $root . '/post' );
+$ua1->get_ok( $root . '/' );
 $ua1->content_contains('The Greenpeace-edited');
 $ua1->content_contains('Why Climate Change is now a Climate CRISIS?-edited');
 $ua1->get_ok( $root . '/post/edit/form/2' );
@@ -69,7 +69,7 @@ $ua1->submit_form(
 );
 $ua1->title_is('Edit Successful | Neurolandia');
 
-$ua1->get_ok( $root . '/post' );
+$ua1->get_ok( $root . '/' );
 $ua1->content_contains('The Greenpeace');
 $ua1->content_contains('Why Climate Change is now a Climate CRISIS?');
 

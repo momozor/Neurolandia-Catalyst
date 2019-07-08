@@ -14,7 +14,7 @@ has 'post_util' => (
     },
 );
 
-sub index : Path : Args(0) :Private {
+sub index : Path : Args(0) : Private {
     my ( $self, $c ) = @_;
 }
 
