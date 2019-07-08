@@ -52,6 +52,16 @@ __PACKAGE__->config(
     enable_catalyst_header                      => 1, # Send X-Catalyst header
 );
 
+__PACKAGE__->config(
+    'Plugin::Authentication' => {
+        default => {
+            class         => 'SimpleDB',
+            user_model    => 'NCModel::User',
+            password_type => 'clear',
+        },
+    },
+);
+
 # Start the application
 __PACKAGE__->setup();
 

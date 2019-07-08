@@ -1,4 +1,5 @@
 use utf8;
+
 package NCSchema::Result::Post;
 
 # Created by DBIx::Class::Schema::Loader
@@ -65,14 +66,14 @@ __PACKAGE__->table("post");
 =cut
 
 __PACKAGE__->add_columns(
-  "id",
-  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-  "title",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
-  "content",
-  { data_type => "varchar", is_nullable => 0, size => 255 },
-  "user_id",
-  { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
+    "id",
+    { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
+    "title",
+    { data_type => "varchar", is_nullable => 0, size => 255 },
+    "content",
+    { data_type => "varchar", is_nullable => 0, size => 255 },
+    "user_id",
+    { data_type => "integer", is_foreign_key => 1, is_nullable => 1 },
 );
 
 =head1 PRIMARY KEY
@@ -98,21 +99,19 @@ Related object: L<NCSchema::Result::User>
 =cut
 
 __PACKAGE__->belongs_to(
-  "user",
-  "NCSchema::Result::User",
-  { id => "user_id" },
-  {
-    is_deferrable => 0,
-    join_type     => "LEFT",
-    on_delete     => "CASCADE",
-    on_update     => "CASCADE",
-  },
+    "user",
+    "NCSchema::Result::User",
+    { id => "user_id" },
+    {
+        is_deferrable => 0,
+        join_type     => "LEFT",
+        on_delete     => "CASCADE",
+        on_update     => "CASCADE",
+    },
 );
-
 
 # Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-07-09 00:32:42
 # DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:4oxLxDTdg7WM5XeP3LSCdA
-
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
