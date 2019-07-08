@@ -21,8 +21,6 @@
       <div class="container">
         <nav class="blog-nav">
 
-
-          
           <a class="blog-nav-item" href="[% c.uri_for(c.controller('Root').action_for('index')) %]">Home</a>
           <a class="blog-nav-item" href="[% c.uri_for(c.controller('Root').action_for('about')) %]">About</a>
             [% IF c.user_exists %]
@@ -42,15 +40,20 @@
         <p class="lead blog-description">Kitteh, where are you? :3</p>
       </div>
       <div class="row">
+        <div class="col-sm-8 blog-main">
 
-        [% content %]
+          [% content %]
+          
+        </div> <!--  blog-main -->
 
+        [% IF title != 'About' %]
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
             <h4>About</h4>
-            <p>He is scared of his own bad code and JVM.</p>
+            <p>He is scared of his own bad code and JVM..</p>
             <p><a href="[% c.uri_for(c.controller('Root').action_for('about')) %]">Read more</a>..</p>
           </div>
+       [% END %]
 
           <!--
           <div class="sidebar-module">

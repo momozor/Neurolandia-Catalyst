@@ -1,7 +1,7 @@
 [% title = 'Home' %]
 
-<div class="col-sm-8 blog-main">
-  
+
+<div style="text-align: center;">
   [% FOREACH post IN posts %]
   <div class="blog-post">
     <h2 class="blog-post-title"><a href="[% c.uri_for(c.controller('Post').action_for('show')) %]/[% post.id %]">[% post.title %]</a></h2>
@@ -19,4 +19,4 @@
     </ul>
   </nav>
 
-</div><!-- /.blog-main -->
+</div>
