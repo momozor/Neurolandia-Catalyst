@@ -21,4 +21,6 @@ SKIP: {
     is( $m->migrate_db, 1 );
 }
 
+is( $m->migrate_schema_and_model, 1 );
+
 done_testing;
