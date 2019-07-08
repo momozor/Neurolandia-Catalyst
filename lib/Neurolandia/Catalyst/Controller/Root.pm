@@ -58,8 +58,9 @@ sub about : Local {
 
 sub default : Path {
     my ( $self, $c ) = @_;
-    $c->response->body('Page not found');
+
     $c->response->status(404);
+    $c->stash( { template => 'error/404.html' } );
 }
 
 sub end : ActionClass('RenderView') { }
