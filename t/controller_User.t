@@ -10,7 +10,14 @@ BEGIN {
 my $root = 'http://127.0.0.1:3000';
 my $ua1  = Test::WWW::Mechanize::Catalyst->new;
 
-$ua1->get_ok( $root . '/user/login' );
+$ua1->get_ok( $root . '/user/login_form' );
 $ua1->title_is('Login | Neurolandia');
+$ua1->submit_form(
+    fields => {
+        email_address => 'skelic3@gmail.com',
+        password      => 'whatever5'
+    }
+);
+$ua1->title_is('Login Successful | Neurolandia');
 
 done_testing();
