@@ -15,7 +15,7 @@ $ua1->title_is('Login | Neurolandia');
 $ua1->submit_form(
     fields => {
         email_address => 'skelic3@gmail.com',
-        password      => 'whatever56'
+        password      => 'whatever5'
     }
 );
 $ua1->title_is('Login Successful | Neurolandia');
