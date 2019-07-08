@@ -16,44 +16,68 @@
   </head>
   
   <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="[% c.uri_for(c.controller('Root').action_for('index')) %]">Neurolandia</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a href="[% c.uri_for(c.controller('Root').action_for('about')) %]">About</a></li>
-            <li><a href="[% c.uri_for(c.controller('Post').action_for('index')) %]">Post Lists</a></li>
-
-            [% IF c.user_exists %]
-            <li><a href="[% c.uri_for(c.controller('User').action_for('logout')) %]">Logout</a></li>
-            <li><a href="#">Logged in as <span style="color: lime">[% c.user.username %]</span></a></li>
-            [% ELSE %]
-            <li><a href="[% c.uri_for(c.controller('User').action_for('login_form')) %]">Login</a></li>
-            [% END %]
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-
-    <div id="content">
-      [% content %]
+    
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="[% c.uri_for(c.controller('Root').action_for('index')) %]">Home</a>
+          <a class="blog-nav-item" href="[% c.uri_for(c.controller('Root').action_for('about')) %]">About</a>
+        </nav>
+      </div>
     </div>
 
-    <!-- jquery -->
-    <script src="/static/js/jquery.min.js"></script>
-    
-    <!-- bootstrap 3 -->
-    <script src="/static/js/bootstrap.min.js"></script>
+    <div class="container">
+      <div class="blog-header">
+        <h1 class="blog-title">Neurolandia</h1>
+        <p class="lead blog-description">Kitteh, where are you? :3</p>
+      </div>
+      <div class="row">
+
+        [% content %]
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>He is scared of people more than a tamed lion. Oh, bad code is annoying too.</p>
+            <p><a href="[% c.uri_for(c.controller('Root').action_for('about')) %]">Read more</a>..</p>
+          </div>
+
+          <!--
+          <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">March 2014</a></li>
+              <li><a href="#">February 2014</a></li>
+              <li><a href="#">January 2014</a></li>
+              <li><a href="#">December 2013</a></li>
+              <li><a href="#">November 2013</a></li>
+              <li><a href="#">October 2013</a></li>
+              <li><a href="#">September 2013</a></li>
+              <li><a href="#">August 2013</a></li>
+              <li><a href="#">July 2013</a></li>
+              <li><a href="#">June 2013</a></li>
+              <li><a href="#">May 2013</a></li>
+              <li><a href="#">April 2013</a></li>
+            </ol>
+          </div>
+          -->
+          <div class="sidebar-module">
+            <h4>Project Page</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/momozor/neurolandia-catalyst">GitHub</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Backend by Momozor and HTML/CSS template taken from <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
   </body>
 </html>
