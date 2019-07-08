@@ -41,10 +41,11 @@ has '_sqlite_dsn' => ( is => 'ro', isa => 'Str', default => 'dbi:SQLite:' );
 
 my $EXIT_STATUS_OK = 0;
 
+# create the tables
 sub migrate_db {
     my ($self) = @_;
 
-    if ( $self->migrate != 0 || $self->migrate_and_populate != 0 ) {
+    if ( $self->migrate == 1 || $self->migrate_and_populate == 1 ) {
         return 1
             if system( 'sqlite3 '
                 . $self->sqlite_db_path . ' < '
@@ -55,18 +56,15 @@ sub migrate_db {
     }
 }
 
+# populate the created tables
+# should be called AFTER $self->migrate_db
 sub populate_db {
     my ($self) = @_;
 
-    if ( $self->migrate_and_populate != 0 ) {
-        return 1
-            if system( 'sqlite3 '
-                . $self->sqlite_db_path . ' < '
-                . $self->schema_sql_populate_path ) == $EXIT_STATUS_OK;
-    }
-    else {
-        return 0;
-    }
+    return 1
+        if system( 'sqlite3 '
+            . $self->sqlite_db_path . ' < '
+            . $self->schema_sql_populate_path ) == $EXIT_STATUS_OK;
 }
 
 sub call_model_creator_helper {
@@ -75,9 +73,8 @@ sub call_model_creator_helper {
     my $create_helper_script_path = './script/neurolandia_catalyst_create.pl';
 
     if ( ( $self->use_carton == 0 ) ) {
-        print "I DONT USE CARTON!";
-        return
-            system( 'perl '
+        return 1
+            if system( 'perl '
                 . $create_helper_script_path
                 . ' model '
                 . $self->model_name
@@ -85,13 +82,13 @@ sub call_model_creator_helper {
                 . $self->schema_name
                 . ' create=static '
                 . $full_sqlite_dsn
-                . ' on_connect_do="PRAGMA foreign_keys = ON"' );
+                . ' on_connect_do="PRAGMA foreign_keys = ON"' )
+            == $EXIT_STATUS_OK;
     }
 
     elsif ( ( $self->use_carton == 1 ) ) {
-        print "I USE CARTON\n";
-        return
-            system( 'carton exec perl '
+        return 1
+            if system( 'carton exec perl '
                 . $create_helper_script_path
                 . ' model '
                 . $self->model_name
@@ -99,17 +96,16 @@ sub call_model_creator_helper {
                 . $self->schema_name
                 . ' create=static '
                 . $full_sqlite_dsn
-                . ' on_connect_do="PRAGMA foreign_keys = ON"' );
+                . ' on_connect_do="PRAGMA foreign_keys = ON"' )
+            == $EXIT_STATUS_OK;
     }
 }
 
 sub migrate_schema_and_model {
     my ($self) = @_;
 
-    #my $full_sqlite_dsn = $self->_sqlite_dsn . $self->sqlite_db_path;
-
-    if ( $self->migrate != 0 || $self->migrate_and_populate != 0 ) {
-        return 1 if $self->call_model_creator_helper == $EXIT_STATUS_OK;
+    if ( $self->migrate == 1 || $self->migrate_and_populate == 1 ) {
+        $self->call_model_creator_helper;
     }
     else {
         return 0;

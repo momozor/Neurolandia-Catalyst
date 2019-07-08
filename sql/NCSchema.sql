@@ -1,12 +1,12 @@
 PRAGMA foreign_keys = ON;
-CREATE TABLE author(
+CREATE TABLE IF NOT EXISTS author(
    id INTEGER PRIMARY KEY,
    username VARCHAR(255) NOT NULL,
    email_address VARCHAR(255) NOT NULL,
    password VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE post(
+CREATE TABLE IF NOT EXISTS post(
     id INTEGER PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     content VARCHAR(255) NOT NULL,
