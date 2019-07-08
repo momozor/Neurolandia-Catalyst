@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+a:link {
+  color: #005585;
+  text-decoration: none;
+}
+a:visited {
+  color: #485270;
+}
+a:hover {
+  color: #b83800;
+  text-decoration: underline;
+}
+#content {
+  text-align: center;
+}
