@@ -31,7 +31,7 @@ sub show : Chained('/') : PathPart('post/show') : Args(1) {
     $c->stash( { template => 'post/show.html', post => $post } );
 }
 
-sub create_form : Local {
+sub create_form : Chained('/') : PathPart('post/create/form') : Args(0) {
     my ( $self, $c ) = @_;
 
     $c->stash( { template => 'post/create_form.html' } );
@@ -56,7 +56,7 @@ sub create : Local {
     }
 }
 
-sub edit_form : Chained('/') : PathPart('post/edit_form') : Args(1) {
+sub edit_form : Chained('/') : PathPart('post/edit/form') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
     # save post id into session to be used by edit action

@@ -25,7 +25,7 @@ $ua1->submit_form(
 );
 $ua1->title_is('Login Successful | Neurolandia');
 
-$ua1->get_ok( $root . '/post/create_form' );
+$ua1->get_ok( $root . '/post/create/form' );
 $ua1->title_is('Creation Form | Neurolandia');
 $ua1->submit_form(
     fields => {
@@ -47,7 +47,7 @@ $ua1->content_lacks('Why it survives?');
 $ua1->get_ok( $root . '/post/show/1' );
 $ua1->title_is('SICP | Neurolandia');
 
-$ua1->get_ok( $root . '/post/edit_form/2' );
+$ua1->get_ok( $root . '/post/edit/form/2' );
 $ua1->title_is('Edit Form | Neurolandia');
 $ua1->submit_form(
     fields => {
@@ -60,7 +60,7 @@ $ua1->title_is('Edit Successful | Neurolandia');
 $ua1->get_ok( $root . '/post' );
 $ua1->content_contains('The Greenpeace-edited');
 $ua1->content_contains('Why Climate Change is now a Climate CRISIS?-edited');
-$ua1->get_ok( $root . '/post/edit_form/2' );
+$ua1->get_ok( $root . '/post/edit/form/2' );
 $ua1->submit_form(
     fields => {
         title   => 'The Greenpeace',

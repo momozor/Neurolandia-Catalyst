@@ -1,4 +1,4 @@
 [% title = post.title %]
 [% post.title %] | [% post.content %] |
-<a href="/post/edit_form/[% post.id %]">Edit</a>
-| <a href="/post/delete/[% post.id %]">Delete</a>
+<a href="[% c.uri_for(c.controller('Post').action_for('edit_form')) %]/[% post.id %]">Edit</a>
+| <a href="[% c.uri_for(c.controller('Post').action_for('delete')) %]/[% post.id %]">Delete</a>

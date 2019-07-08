@@ -1,6 +1,6 @@
 [% title = 'Creation Form' %]
 
-<form method="POST" action="/post/create">
+<form method="POST" action="[% c.uri_for(c.controller('Post').action_for('create')) %]">
 
   <label>Title</label>
   <input class="form-control" type="text" name="title" required>

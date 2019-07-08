@@ -1,5 +1,5 @@
 [% title = 'Edit Form' %]
-<form method="POST" action="/post/edit">
+<form method="POST" action="[% c.uri_for(c.controller('Post').action_for('edit')) %]">
 
   <label>Title</label>
   <input class="form-control" type="text" name="title" value="[% post.title %]" required>
