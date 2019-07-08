@@ -14,7 +14,7 @@ $ua1->get_ok( $root . '/user/login_form' );
 $ua1->title_is('Login | Neurolandia');
 $ua1->submit_form(
     fields => {
-        email_address => 'skelic3@gmail.com',
+        email_address => 'admin@email.com',
         password      => 'whatever5'
     }
 );

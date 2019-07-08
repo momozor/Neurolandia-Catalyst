@@ -1,7 +1,18 @@
 package Neurolandia::Catalyst::Controller::User;
+use Neurolandia::Catalyst::Utils::Controller::User;
 use Moose;
 
 BEGIN { extends 'Neurolandia::Catalyst::Controller'; }
+
+has 'user_util' => (
+    is      => 'ro',
+    isa     => 'Neurolandia::Catalyst::Utils::Controller::User',
+    default => sub {
+        my ($self) = @_;
+
+        return Neurolandia::Catalyst::Utils::Controller::User->new;
+    },
+);
 
 # hide /user route from being accessed from anybody
 # with :Private modifier
@@ -18,7 +29,8 @@ sub login_form : Local {
 sub login : Local {
     my ( $self, $c ) = @_;
 
-    my $email_address = $c->request->params->{email_address};
+    my $em            = $c->request->params->{email_address};
+    my $email_address = $self->user_util->is_email_valid($em);
     my $password      = $c->request->params->{password};
 
     if ( $email_address && $password ) {

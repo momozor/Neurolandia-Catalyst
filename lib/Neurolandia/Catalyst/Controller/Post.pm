@@ -1,16 +1,16 @@
 package Neurolandia::Catalyst::Controller::Post;
 use Moose;
-use Neurolandia::Catalyst::Utils::Post;
+use Neurolandia::Catalyst::Utils::Controller::Post;
 
 BEGIN { extends 'Neurolandia::Catalyst::Controller' }
 
 has 'post_util' => (
     is      => 'ro',
-    isa     => 'Neurolandia::Catalyst::Utils::Post',
+    isa     => 'Neurolandia::Catalyst::Utils::Controller::Post',
     default => sub {
         my ($self) = @_;
 
-        return Neurolandia::Catalyst::Utils::Post->new;
+        return Neurolandia::Catalyst::Utils::Controller::Post->new;
     },
 );
 

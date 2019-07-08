@@ -1,6 +1,5 @@
-package Neurolandia::Catalyst::Utils::Post;
+package Neurolandia::Catalyst::Utils::Controller::Post;
 use Moose;
-use Email::Valid;
 use namespace::autoclean;
 
 has 'current_post_model' => (
@@ -24,12 +23,6 @@ sub is_type_integer {
     my ( $self, $data ) = @_;
 
     return 1 if $data =~ /[0-9]+/;
-}
-
-sub is_email_valid {
-    my ( $self, $email ) = @_;
-    my $address = Email::Valid->address($email);
-    return 1 if $address;
 }
 
 __PACKAGE__->meta->make_immutable;
