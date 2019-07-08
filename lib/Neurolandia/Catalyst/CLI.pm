@@ -9,8 +9,8 @@ has 'verbose'    => ( is => 'rw', isa => 'Bool', default => 0 );
 
 sub carton_execute {
     my ( $self, $cli ) = @_;
-    my $exit_status_ok = 0;
-    return 1 if system( 'carton', 'exec', $cli ) == $exit_status_ok;
+    my $EXIT_STATUS_OK = 0;
+    return 1 if system( 'carton', 'exec', $cli ) == $EXIT_STATUS_OK;
 }
 
 __PACKAGE__->meta->make_immutable;
