@@ -1,5 +1,6 @@
 package Neurolandia::Catalyst::CLI;
 use MooseX::Modern;
+use IPC::Cmd qw(can_run run);
 
 with 'MooseX::Getopt';
 
@@ -44,9 +45,10 @@ Run external command with carton.
 
 sub carton_execute {
     my ( $self, $cli ) = @_;
-    my $EXIT_STATUS_OK = 0;
+    my $CARTON_OK = can_run('carton') or die "carton binary doesn't exist in PATH\n";
+    my $result = scalar run(command => "$CARTON_OK exec $cli", verbose => 1);
 
-    return 1 if system( 'carton', 'exec', $cli ) == $EXIT_STATUS_OK;
+   return $result; 
 }
 
 =head1 AUTHOR

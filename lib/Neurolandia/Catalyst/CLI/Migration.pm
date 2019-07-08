@@ -1,5 +1,6 @@
 package Neurolandia::Catalyst::CLI::Migration;
 use MooseX::Modern;
+use IPC::Cmd qw(can_run run);
 
 extends 'Neurolandia::Catalyst::CLI';
 
@@ -39,31 +40,32 @@ has '_supported_dbs_list' => (
 has '_sqlite_dsn' => ( is => 'ro', isa => 'Str', default => 'dbi:SQLite:' );
 
 my $EXIT_STATUS_OK = 0;
+my $SQLITE_OK = can_run('sqlite3') or die "sqlite3 binary doesn't exist in PATH\n";
+
+sub _full_sqlite_cmd {
+    my ($self, $sql_schema_type) = @_;
+
+    return $SQLITE_OK  . $self->sqlite_db_path . ' < ' . $sql_schema_type;
+}
 
 # create the tables
 sub migrate_db {
     my ($self) = @_;
-
+    
     if ( $self->migrate == 1 || $self->migrate_and_populate == 1 ) {
-        return 1
-            if system( 'sqlite3 '
-                . $self->sqlite_db_path . ' < '
-                . $self->schema_sql_path ) == $EXIT_STATUS_OK;
-    }
-    else {
-        return 0;
+        my $result = scalar run(command => $self->_full_sqlite_cmd($self->schema_sql_path), verbose => 1);
+        
+        return $result;
     }
 }
 
 # populate the created tables
 # should be called AFTER $self->migrate_db
 sub populate_db {
-    my ($self) = @_;
+    my ($self) = @_; 
+    my $result = scalar run(command => $self->_full_sqlite_cmd($self->schema_sql_populate_path), verbose => 1);
 
-    return 1
-        if system( 'sqlite3 '
-            . $self->sqlite_db_path . ' < '
-            . $self->schema_sql_populate_path ) == $EXIT_STATUS_OK;
+    return $result;
 }
 
 sub call_model_creator_helper {
