@@ -10,11 +10,21 @@ has 'migrate' => (
     writer  => 'set_migrate',
     default => 0
 );
+
+has 'migrate_and_populate' => (
+    is      => 'rw',
+    isa     => 'Bool',
+    writer  => 'set_migrate_and_populate',
+    default => 0
+);
+
 has 'rollback' => ( 'is' => 'rw', 'isa' => 'Bool', default => 0 );
 has 'sqlite_db_path' =>
     ( is => 'rw', isa => 'Str', default => './var/database.db' );
 has 'schema_sql_path' =>
     ( is => 'rw', isa => 'Str', default => './sql/NCSchema.sql' );
+has 'schema_sql_populate_path' =>
+    ( is => 'rw', isa => 'Str', default => './sql/NCSchemaPopulate.sql' );
 has 'schema_name' => ( is => 'rw', isa => 'Str', default => 'NCSchema' );
 has 'model_name'  => ( is => 'rw', isa => 'Str', default => 'NCModel' );
 has 'db_user'     => ( is => 'rw', isa => 'Str', default => '' );
@@ -34,11 +44,25 @@ my $EXIT_STATUS_OK = 0;
 sub migrate_db {
     my ($self) = @_;
 
-    if ( $self->migrate != 0 ) {
+    if ( $self->migrate != 0 || $self->migrate_and_populate != 0 ) {
         return 1
             if system( 'sqlite3 '
                 . $self->sqlite_db_path . ' < '
                 . $self->schema_sql_path ) == $EXIT_STATUS_OK;
+    }
+    else {
+        return 0;
+    }
+}
+
+sub populate_db {
+    my ($self) = @_;
+
+    if ( $self->migrate_and_populate != 0 ) {
+        return 1
+            if system( 'sqlite3 '
+                . $self->sqlite_db_path . ' < '
+                . $self->schema_sql_populate_path ) == $EXIT_STATUS_OK;
     }
     else {
         return 0;
@@ -50,7 +74,9 @@ sub migrate_schema_and_model {
     my $create_helper_script_path = './script/neurolandia_catalyst_create.pl';
     my $full_sqlite_dsn = $self->_sqlite_dsn . $self->sqlite_db_path;
 
-    if ( $self->migrate != 0 && $self->use_carton == 0 ) {
+    if ( ( $self->migrate != 0 || $self->migrate_and_populate != 0 )
+        && $self->use_carton == 0 )
+    {
         return 1
             if system( 'perl '
                 . $create_helper_script_path
@@ -63,7 +89,9 @@ sub migrate_schema_and_model {
                 . ' on_connect_do="PRAGMA foreign_keys = ON"' )
             == $EXIT_STATUS_OK;
     }
-    elsif ( $self->migrate != 0 && $self->use_carton != 0 ) {
+    elsif ( ( $self->migrate != 0 || $self->migrate_and_populate != 0 )
+        && $self->use_carton != 0 )
+    {
         return 1
             if system( 'carton exec perl '
                 . $create_helper_script_path
@@ -79,7 +107,6 @@ sub migrate_schema_and_model {
     else {
         return 0;
     }
-
 }
 
 __PACKAGE__->meta->make_immutable;
