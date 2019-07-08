@@ -59,6 +59,8 @@ sub create : Local {
 sub edit_form : Chained('/') : PathPart('post/edit_form') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
+    # save post id into session to be used by login action
+    $c->session->{current_post_id} = $id;
     my $post = $self->post_util->get_model_object_by_id( $c, $id );
 
     $c->stash( { template => 'post/edit_form.html', post => $post } );
@@ -67,7 +69,7 @@ sub edit_form : Chained('/') : PathPart('post/edit_form') : Args(1) {
 sub edit : Local {
     my ( $self, $c ) = @_;
 
-    my $id      = $c->request->params->{id};
+    my $id      = $c->session->{current_post_id};
     my $title   = $c->request->params->{title};
     my $content = $c->request->params->{content};
 
