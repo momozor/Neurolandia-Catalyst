@@ -1,3 +1,9 @@
 [% title = 'Home' %]
-
-<h1>Welcome!</h1>
+<link rel="stylesheet" type="text/css" media="screen" href="/static/css/home.css">
+<div class="inner cover">
+  <h1 class="cover-heading">Neurolandia::Catalyst</h1>
+  <p class="lead">Kewl</p>
+  <p class="lead">
+    <a href="[% c.uri_for(c.controller('Post').action_for('index')) %]" class="btn btn-lg btn-default">Check out posts</a>
+  </p>
+</div>
