@@ -15,4 +15,4 @@ is( $cli->is_test_path_correct, 1 );
 
 isnt( $cli2->is_test_path_correct, 1 );
 
-done_testing();
+done_testing;

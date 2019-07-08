@@ -6,4 +6,4 @@ BEGIN {
     use_ok('Neurolandia::Catalyst::Controller');
 }
 
-done_testing();
+done_testing;

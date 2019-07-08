@@ -13,4 +13,4 @@ is( $pu->is_type_integer(23_33_22), 1 );
 is( $pu->is_type_integer(0),        1 );
 isnt( $pu->is_type_integer('w'), 1 );
 
-done_testing();
+done_testing;

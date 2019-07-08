@@ -4,4 +4,4 @@ use Test::More;
 
 BEGIN { use_ok 'Neurolandia::Catalyst::Model::NCModel' }
 
-done_testing();
+done_testing;

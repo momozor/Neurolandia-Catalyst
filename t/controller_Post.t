@@ -63,4 +63,4 @@ $ua1->get_ok( $root . '/post' );
 $ua1->content_contains('The Greenpeace');
 $ua1->content_contains('Why Climate Change is now a Climate CRISIS?');
 
-done_testing();
+done_testing;

@@ -11,4 +11,4 @@ my $cli = new_ok('Neurolandia::Catalyst::CLI');
 
 is( $cli->carton_execute('perl -v'), 1 );
 
-done_testing();
+done_testing;

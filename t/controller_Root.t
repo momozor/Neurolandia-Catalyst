@@ -16,4 +16,4 @@ $ua->title_is('Home | Neurolandia');
 $ua->get_ok( $root . '/about' );
 $ua->title_is('About | Neurolandia');
 
-done_testing();
+done_testing;

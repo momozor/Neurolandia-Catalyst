@@ -23,4 +23,4 @@ $ua1->title_is('Login Successful | Neurolandia');
 $ua1->get_ok( $root . '/user/logout' );
 $ua1->title_is('Home | Neurolandia');
 
-done_testing();
+done_testing;
