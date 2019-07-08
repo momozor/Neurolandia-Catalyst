@@ -5,8 +5,6 @@ Neurolandia::Catalyst
 ---------------------
 Neurolandia::Catalyst is a revamped version of Neurolandia Mojolicious that I made.
 It is a blog with typical CRUD operations, authentication and authorization.
-No registration is included due to the concept of the web app being similar to a simple
-CMS application.
 
 Requirements
 ------------
@@ -23,7 +21,7 @@ Simply run `cpanm --installdeps .` or if you have Carton, run `carton install`.
 Testing
 -------
 Neurolandia::Catalyst (NC) development sees automated testing as one of the
-most important practice for better quality software.
+most important practice for a better quality software.
 
 1. First, migrate the schema by running the
 ./script/neurolandia_catalyst_migrate.pl script
