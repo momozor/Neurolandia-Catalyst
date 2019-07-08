@@ -1,8 +1,8 @@
 package Neurolandia::Catalyst::Controller::User;
+use MooseX::Modern;
 use Neurolandia::Catalyst::Utils::Controller::User;
-use Moose;
 
-BEGIN { extends 'Neurolandia::Catalyst::Controller'; }
+BEGIN { extends 'Catalyst::Controller'; }
 
 has 'user_util' => (
     is      => 'ro',

@@ -1,7 +1,6 @@
 package Neurolandia::Catalyst::Utils::Controller::User;
-use Moose;
+use MooseX::Modern;
 use Email::Valid;
-use namespace::autoclean;
 
 sub is_email_valid {
     my ( $self, $email ) = @_;

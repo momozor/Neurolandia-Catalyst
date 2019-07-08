@@ -1,7 +1,6 @@
 #!/usr/bin/env perl
 
-use strict;
-use warnings;
+use Modern::Perl;
 use lib 'lib';
 use Neurolandia::Catalyst::CLI::Testing;
 

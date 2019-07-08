@@ -1,8 +1,8 @@
 package Neurolandia::Catalyst::Controller::Post;
-use Moose;
+use MooseX::Modern;
 use Neurolandia::Catalyst::Utils::Controller::Post;
 
-BEGIN { extends 'Neurolandia::Catalyst::Controller' }
+BEGIN { extends 'Catalyst::Controller' }
 
 has 'post_util' => (
     is      => 'ro',
@@ -59,7 +59,7 @@ sub create : Local {
 sub edit_form : Chained('/') : PathPart('post/edit_form') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
-    # save post id into session to be used by login action
+    # save post id into session to be used by edit action
     $c->session->{current_post_id} = $id;
     my $post = $self->post_util->get_model_object_by_id( $c, $id );
 

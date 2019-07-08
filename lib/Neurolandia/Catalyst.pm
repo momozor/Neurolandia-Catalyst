@@ -1,6 +1,5 @@
 package Neurolandia::Catalyst;
-use Moose;
-use namespace::autoclean;
+use MooseX::Modern;
 
 use Catalyst::Runtime 5.80;
 

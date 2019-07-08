@@ -1,6 +1,5 @@
 package Neurolandia::Catalyst::Utils::Controller::Post;
-use Moose;
-use namespace::autoclean;
+use MooseX::Modern;
 
 has 'current_post_model' => (
     is      => 'ro',

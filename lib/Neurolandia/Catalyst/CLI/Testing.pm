@@ -1,6 +1,5 @@
 package Neurolandia::Catalyst::CLI::Testing;
-use Moose;
-use namespace::autoclean;
+use MooseX::Modern;
 
 extends 'Neurolandia::Catalyst::CLI';
 

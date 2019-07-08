@@ -1,7 +1,7 @@
 package Neurolandia::Catalyst::Controller::Root;
-use Moose;
+use MooseX::Modern;
 
-BEGIN { extends 'Neurolandia::Catalyst::Controller' }
+BEGIN { extends 'Catalyst::Controller' }
 
 #
 # Sets the actions in this controller to be registered with no prefix

@@ -1,6 +1,5 @@
 package Neurolandia::Catalyst::CLI;
-use Moose;
-use namespace::autoclean;
+use MooseX::Modern;
 
 with 'MooseX::Getopt';
 

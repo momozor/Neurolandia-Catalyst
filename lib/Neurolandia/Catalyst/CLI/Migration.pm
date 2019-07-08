@@ -1,6 +1,5 @@
 package Neurolandia::Catalyst::CLI::Migration;
-use Moose;
-use namespace::autoclean;
+use MooseX::Modern;
 
 extends 'Neurolandia::Catalyst::CLI';
 
