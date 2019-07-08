@@ -24,9 +24,10 @@ SKIP: {
 SKIP: {
     my $schema_file        = './lib/' . $m->schema_name . '.pm';
     my $schema_file_exists = 1 if -f $schema_file;
-    skip 'schema file already exists', 1 if $schema_file_exists;
+    skip 'schema file already exists', 2 if $schema_file_exists;
 
-    is( $m->migrate_schema_and_model, 1 );
+    is( $m->call_model_creator_helper, 1 );
+    is( $m->migrate_schema_and_model,  1 );
 }
 
 ok( $m->set_migrate_and_populate(1) );
