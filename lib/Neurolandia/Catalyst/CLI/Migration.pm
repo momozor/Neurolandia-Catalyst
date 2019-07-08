@@ -40,6 +40,9 @@ sub migrate_db {
                 . $self->sqlite_db_path . ' < '
                 . $self->schema_sql_path ) == $EXIT_STATUS_OK;
     }
+    else {
+        return 0;
+    }
 }
 
 sub migrate_schema_and_model {
@@ -59,6 +62,9 @@ sub migrate_schema_and_model {
                 . $full_sqlite_dsn
                 . ' on_connect_do="PRAGMA foreign_keys = ON"' )
             == $EXIT_STATUS_OK;
+    }
+    else {
+        return 0;
     }
 
 }
