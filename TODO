@@ -1,13 +1,3 @@
-        - CRUD (everyone including other admins)
-        - CRUD (their own only)
-        - create
-        - delete
-        - show
-        - update
-    - admin
-    - regular_user
-* authorize authenticated users based on their role
 * include an 'overwrite' or 'override' option to migration helper script
 * make an exception class for CLI::Testing->is_test_path_correct and CLI->carton_execute
 * settle front-end design (uh,..urgh)
-instead of using global $ENV{}.

@@ -7,7 +7,6 @@ argv = --profile=$ROOT/.perltidyrc
 select = .gitignore
 select = var/.gitignore
 select = cpanfile
-select = TODO
 
 [Test::Vars]
 select = {lib,t,script}/**/*.{pl,pm}
