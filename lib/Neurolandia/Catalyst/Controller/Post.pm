@@ -42,12 +42,14 @@ sub create : Local {
 
     my $title   = $c->request->params->{title};
     my $content = $c->request->params->{content};
+    my $user_id = $c->user->get('id');
 
-    if ( $title && $content ) {
+    if ( $title && $content && $user_id ) {
         my $post = $c->model( $self->post_util->current_post_model )->create(
             {
                 title   => $title,
                 content => $content,
+                user_id => $user_id
             }
         );
         $c->stash( { template => 'post/create_done.html', post => $post } );

@@ -1,5 +1,4 @@
 * Make an exception class for CLI::Testing->is_test_path_correct and CLI->carton_execute
-* Make migrate helper script to be able to accept db configs as cli parameters
 instead of using global $ENV{}.
 * Finish authentication operations.
 * Settle front-end design (uh,..urgh)

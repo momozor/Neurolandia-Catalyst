@@ -15,6 +15,16 @@ $ua1->title_is('Posts Lists | Neurolandia');
 $ua1->content_contains('SICP');
 $ua1->content_contains('The Greenpeace');
 
+$ua1->get_ok( $root . '/user/login' );
+$ua1->title_is('Login | Neurolandia');
+$ua1->submit_form(
+    fields => {
+        email_address => 'admin@email.com',
+        password      => 'whatever5'
+    }
+);
+$ua1->title_is('Login Successful | Neurolandia');
+
 $ua1->get_ok( $root . '/post/create_form' );
 $ua1->title_is('Creation Form | Neurolandia');
 $ua1->submit_form(
