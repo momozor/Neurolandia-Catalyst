@@ -21,6 +21,12 @@ SKIP: {
     is( $m->migrate_db, 1 );
 }
 
-is( $m->migrate_schema_and_model, 1 );
+SKIP: {
+    my $schema_file        = './lib/' . $m->schema_name . '.pm';
+    my $schema_file_exists = 1 if -f $schema_file;
+    skip 'schema file already exists', 1 if $schema_file_exists;
+
+    is( $m->migrate_schema_and_model, 1 );
+}
 
 done_testing;
