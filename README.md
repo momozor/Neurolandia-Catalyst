@@ -3,8 +3,9 @@
 
 Neurolandia::Catalyst
 ---------------------
-Neurolandia::Catalyst is a revamped version of Neurolandia Mojolicious that I made.
-It is a web application with typical CRUD operations, authentication and authorization.
+Neurolandia::Catalyst is a revamped version of [Neurolandia Mojolicious](https://github.com/momozor/neurolandia)
+that I made. It is a project with typical CRUD operations, authentication and authorization and heavy test
+suites.
 
 Requirements
 ------------
