@@ -26,7 +26,9 @@ most important practice for a better quality software. Getting test coverage
 over 60% is also a priority.
 
 1. First, migrate the default database, schema and model by running the
-`./script/neurolandia_catalyst_migration.pl --migrate` (requires sqlite3 binary)
+`./script/neurolandia_catalyst_migration.pl --migrate_and_populate` (requires sqlite3 binary)
+    - You will get an error telling that you cannot overwrite schema. This is fine. Ignore it.
+        - Overwrite option will be included soon with this migration helper script.
     - If you want to run the migration with carton, just add `--use_carton`
     flag as the script argument. 
 
