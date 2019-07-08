@@ -21,7 +21,16 @@ sub login : Local {
     my $email_address = $c->request->params->{email_address};
     my $password      = $c->request->params->{password};
 
-    $c->stash( { template => 'user/login_done.html' } );
+    if ( $email_address && $password ) {
+
+        if ( $c->authenticate( {
+            email_address => $email_address,
+            password      => $password
+        } ) )
+        {
+            $c->stash( { template => 'user/login_done.html' } );
+        }
+    }
 }
 
 __PACKAGE__->meta->make_immutable;
