@@ -23,7 +23,7 @@ Testing
 -------
 Neurolandia::Catalyst (NC) development sees automated testing as one of the
 most important practice for a better quality software. Getting test coverage
-over 60% is a priority.
+over 60% is also a priority.
 
 1. First, migrate the default database, schema and model by running the
 `./script/neurolandia_catalyst_migration.pl --migrate` (requires sqlite3 binary)
