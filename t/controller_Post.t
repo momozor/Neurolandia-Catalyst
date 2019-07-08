@@ -15,7 +15,7 @@ $ua1->title_is('Posts Lists | Neurolandia');
 $ua1->content_contains('SICP');
 $ua1->content_contains('The Greenpeace');
 
-$ua1->get_ok( $root . '/user/login' );
+$ua1->get_ok( $root . '/user/login_form' );
 $ua1->title_is('Login | Neurolandia');
 $ua1->submit_form(
     fields => {

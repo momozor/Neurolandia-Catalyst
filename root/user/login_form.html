@@ -1,0 +1,15 @@
+[% title = 'Login' %]
+
+<form class="form-signin" method="POST" action="[% c.uri_for(c.controller('User').action_for('login')) %]">
+
+  <h2 class="form-signin-heading">Login</h2>
+
+  <label>Email Address</label>
+  <input class="form-control" type="email" name="email_address" required autofocus>
+
+  <label>Password</label>
+  <input class="form-control" type="password" name="password" required>
+  
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
+</form>
+    

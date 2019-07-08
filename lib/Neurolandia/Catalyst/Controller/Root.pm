@@ -34,7 +34,8 @@ sub auto : Private {
             '***Root::auto User not found, forwarding to /user/login');
 
         # Redirect the user to the login page
-        $c->response->redirect( $c->uri_for('/user/login') );
+        $c->response->redirect( $c->uri_for(
+            $c->controller('User')->action_for('login_form') ) );
 
     # Return 0 to cancel 'post-auto' processing and prevent use of application
         return 0;

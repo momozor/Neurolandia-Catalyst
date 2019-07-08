@@ -39,7 +39,7 @@
             <li><a href="[% c.uri_for(c.controller('User').action_for('logout')) %]">Logout</a></li>
             <li><a href="#">Logged in as <span style="color: lime">[% c.user.username %]</span></a></li>
             [% ELSE %]
-            <li><a href="[% c.uri_for(c.controller('User').action_for('login')) %]">Login</a></li>
+            <li><a href="[% c.uri_for(c.controller('User').action_for('login_form')) %]">Login</a></li>
             [% END %]
           </ul>
         </div><!-- /.navbar-collapse -->

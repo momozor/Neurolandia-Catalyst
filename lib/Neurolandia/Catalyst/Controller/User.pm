@@ -23,7 +23,7 @@ sub index : Path : Args(0) : Private {
 sub login_form : Local {
     my ( $self, $c ) = @_;
 
-    $c->stash( { template => 'user/login.html' } );
+    $c->stash( { template => 'user/login_form.html' } );
 }
 
 sub login : Local {
