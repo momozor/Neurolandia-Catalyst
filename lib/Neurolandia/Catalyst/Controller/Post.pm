@@ -14,13 +14,8 @@ has 'post_util' => (
     },
 );
 
-sub index : Path : Args(0) {
+sub index : Path : Args(0) :Private {
     my ( $self, $c ) = @_;
-
-    $c->stash( {
-        template => 'post/list.html',
-        posts    => [ $c->model( $self->post_util->current_post_model )->all ]
-    } );
 }
 
 sub show : Chained('/') : PathPart('post/show') : Args(1) {

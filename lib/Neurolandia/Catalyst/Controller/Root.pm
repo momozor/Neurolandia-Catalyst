@@ -19,7 +19,7 @@ sub auto : Private {
     # to only allow unauthenticated access to the 'index' action we
     # added above.
     if (   ( $c->controller eq $c->controller('User') )
-        || ( $c->action eq $c->controller('Post')->action_for('index') )
+        || ( $c->action eq $c->controller('Root')->action_for('index') )
         || ( $c->action eq $c->controller('Post')->action_for('show') )
         || ( $c->controller eq $c->controller('Root') ) )
     {
@@ -48,7 +48,10 @@ sub auto : Private {
 sub index : Path : Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->stash( { template => 'home.html' } );
+        $c->stash( {
+        template => 'home.html',
+        posts => [ $c->model('NCModel::Post')->all ],
+    } );
 }
 
 sub about : Local {
