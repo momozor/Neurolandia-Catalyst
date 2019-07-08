@@ -40,21 +40,25 @@ has '_supported_dbs_list' => (
 has '_sqlite_dsn' => ( is => 'ro', isa => 'Str', default => 'dbi:SQLite:' );
 
 my $EXIT_STATUS_OK = 0;
-my $SQLITE_OK = can_run('sqlite3') or die "sqlite3 binary doesn't exist in PATH\n";
+my $SQLITE_OK      = can_run('sqlite3')
+    or die "sqlite3 binary doesn't exist in PATH\n";
 
 sub _full_sqlite_cmd {
-    my ($self, $sql_schema_type) = @_;
+    my ( $self, $sql_schema_type ) = @_;
 
-    return $SQLITE_OK  . $self->sqlite_db_path . ' < ' . $sql_schema_type;
+    return $SQLITE_OK . $self->sqlite_db_path . ' < ' . $sql_schema_type;
 }
 
 # create the tables
 sub migrate_db {
     my ($self) = @_;
-    
+
     if ( $self->migrate == 1 || $self->migrate_and_populate == 1 ) {
-        my $result = scalar run(command => $self->_full_sqlite_cmd($self->schema_sql_path), verbose => 1);
-        
+        my $result = scalar run(
+            command => $self->_full_sqlite_cmd( $self->schema_sql_path ),
+            verbose => 1
+        );
+
         return $result;
     }
 }
@@ -62,8 +66,11 @@ sub migrate_db {
 # populate the created tables
 # should be called AFTER $self->migrate_db
 sub populate_db {
-    my ($self) = @_; 
-    my $result = scalar run(command => $self->_full_sqlite_cmd($self->schema_sql_populate_path), verbose => 1);
+    my ($self) = @_;
+    my $result = scalar run(
+        command => $self->_full_sqlite_cmd( $self->schema_sql_populate_path ),
+        verbose => 1
+    );
 
     return $result;
 }
