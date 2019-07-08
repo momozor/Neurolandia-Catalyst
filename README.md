@@ -4,7 +4,7 @@
 Neurolandia::Catalyst
 ---------------------
 Neurolandia::Catalyst is a revamped version of Neurolandia Mojolicious that I made.
-It is a blog with typical CRUD operations, authentication and authorization.
+It is a web application with typical CRUD operations, authentication and authorization.
 
 Requirements
 ------------
@@ -12,6 +12,7 @@ Requirements
 from CPAN (or now, MetaCPAN)
 * At least perl 5.10+
 * cpanm
+* sqlite3
 * (Optional) Carton
 
 Installing Dependencies
@@ -21,15 +22,18 @@ Simply run `cpanm --installdeps .` or if you have Carton, run `carton install`.
 Testing
 -------
 Neurolandia::Catalyst (NC) development sees automated testing as one of the
-most important practice for a better quality software.
+most important practice for a better quality software. Getting test coverage
+over 60% is a priority.
 
-1. First, migrate the schema by running the
-./script/neurolandia_catalyst_migrate.pl script
+1. First, migrate the default database, schema and model by running the
+`./script/neurolandia_catalyst_migration.pl --migrate` (requires sqlite3 binary)
+    - If you want to run the migration with carton, just add `--use_carton`
+    flag as the script argument. 
 
-2. Run ./script/neurolandia_catalyst_test_more.pl to run the tests *after*
+2. Run `./script/neurolandia_catalyst_test_more.pl` to run the tests *after*
 you ran the migration script
-    - If you want to run the tests with Carton, just add `--use_carton` flag
-    to the script.
+    - Just like the migration script above, add `--use_carton` to run tests
+    with carton.
 
 Local Server
 ------------
