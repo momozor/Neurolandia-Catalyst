@@ -2,9 +2,9 @@
 <h2>Posts Lists</h2>
 <hr>
 
-<ul>
-[% FOREACH post IN posts %]
-  <li>[% post.title %] | [% post.content %] |
-  <a href="/post/show/[% post.id %]">Inspect</a></li>
-[% END %]
-<ul>
+<ol>
+  [% FOREACH post IN posts %]
+  <li>[% post.title %] | [% post.content %] | <span style="color: green;">[% c.model('NCModel::User').find(post.user_id).username %]</span>
+    | <a href="/post/show/[% post.id %]">Inspect</a></li>
+  [% END %]
+<ol>
