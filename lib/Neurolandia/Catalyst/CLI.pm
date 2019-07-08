@@ -10,6 +10,7 @@ has 'verbose'    => ( is => 'rw', isa => 'Bool', default => 0 );
 sub carton_execute {
     my ( $self, $cli ) = @_;
     my $EXIT_STATUS_OK = 0;
+
     return 1 if system( 'carton', 'exec', $cli ) == $EXIT_STATUS_OK;
 }
 

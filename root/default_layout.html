@@ -34,7 +34,13 @@
           <ul class="nav navbar-nav">
             <li><a href="[% c.uri_for(c.controller('Root').action_for('about')) %]">About</a></li>
             <li><a href="[% c.uri_for(c.controller('Post').action_for('index')) %]">Post Lists</a></li>
+
+            [% IF c.user_exists %]
+            <li><a href="[% c.uri_for(c.controller('User').action_for('logout')) %]">Logout</a></li>
+            <li><a style="color: lime;" href="#">Logged in as [% c.user.username %]</a></li>
+            [% ELSE %]
             <li><a href="[% c.uri_for(c.controller('User').action_for('login')) %]">Login</a></li>
+            [% END %]
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
