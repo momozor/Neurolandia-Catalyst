@@ -1,6 +1,5 @@
 package Neurolandia::Catalyst::CLI;
-use Moose::Role;
-use namespace::autoclean;
+use MooseX::Modern;
 use IPC::Cmd qw(can_run run);
 
 with 'MooseX::Getopt';
@@ -13,7 +12,7 @@ Neurolandia::Catalyst::CLI - A role for command-line operations.
 
 =head1 DESCRIPTION
 
-A role to be consumed with any command-line classes.
+An abstract class to be inherited with any command-line classes.
 
 It uses MooseX::Getopt role to enable typical command-line functionalities. Please see the
 documentation for the module.

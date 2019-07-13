@@ -2,7 +2,7 @@ package Neurolandia::Catalyst::CLI::Migration;
 use MooseX::Modern;
 use IPC::Cmd qw(can_run run);
 
-with 'Neurolandia::Catalyst::CLI';
+extends 'Neurolandia::Catalyst::CLI';
 
 has 'migrate' => (
     'is'    => 'rw',
