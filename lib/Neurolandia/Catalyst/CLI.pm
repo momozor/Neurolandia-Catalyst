@@ -1,5 +1,6 @@
 package Neurolandia::Catalyst::CLI;
-use MooseX::Modern;
+use Moose::Role;
+use namespace::autoclean;
 use IPC::Cmd qw(can_run run);
 
 with 'MooseX::Getopt';
@@ -8,14 +9,13 @@ with 'MooseX::Getopt';
 
 =head1 NAME
 
-Neurolandia::Catalyst::CLI - An abstract class for command-line operations.
+Neurolandia::Catalyst::CLI - A role for command-line operations.
 
 =head1 DESCRIPTION
 
-An abstract class (will be turned into a proper abstract class which cannot be instanced)
-to be used with any command-line class classes.
+A role to be consumed with any command-line classes.
 
-It uses MooseX::Getopt to enable typical command-line functionalities. Please see the
+It uses MooseX::Getopt role to enable typical command-line functionalities. Please see the
 documentation for the module.
 
 =head1 ATTRIBUTES/PROPERTIES
@@ -45,6 +45,7 @@ Run external command with carton.
 
 sub carton_execute {
     my ( $self, $cli ) = @_;
+
     my $CARTON_OK = can_run('carton')
         or die "carton binary doesn't exist in PATH\n";
     my $result
@@ -60,7 +61,5 @@ Momozor
 =head1 LICENSE
 
 =cut
-
-__PACKAGE__->meta->make_immutable;
 
 1;

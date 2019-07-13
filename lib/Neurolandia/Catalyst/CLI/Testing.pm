@@ -1,7 +1,7 @@
 package Neurolandia::Catalyst::CLI::Testing;
 use MooseX::Modern;
 
-extends 'Neurolandia::Catalyst::CLI';
+with 'Neurolandia::Catalyst::CLI';
 
 has 'test_path' => ( is => 'rw', isa => 'Str', default => './t' );
 
