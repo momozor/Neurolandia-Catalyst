@@ -8,13 +8,13 @@ use Neurolandia::Catalyst::CLI::Migration;
 my $app = Neurolandia::Catalyst::CLI::Migration->new_with_options;
 
 sub run_create_tables_db {
-    die "[ERROR]: Cannot overwrite database\n" if $app->migrate_db != 1;
+    die "[ERROR]: Cannot overwrite database\n" if !$app->migrate_db;
     say
         '[SUCCESS]: SQLite database table migration has been successfully completed.';
 }
 
 sub run_model_and_schema_migration {
-    if ( $app->migrate_schema_and_model != 1 ) {
+    if ( !$app->migrate_schema_and_model) {
         warn "[WARNING]: Cannot overwrite schema file!\n";
     }
     else {
@@ -25,7 +25,7 @@ sub run_model_and_schema_migration {
 
 sub run_populate_created_tables_db {
     die "[ERROR]: Cannot populated SQLite database with test fixtures!\n "
-        if $app->populate_db != 1;
+        if !$app->populate_db;
     say '[SUCCESS]: SQLite database has been populated with test fixtures.';
 }
 

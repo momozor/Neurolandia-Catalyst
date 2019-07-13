@@ -57,10 +57,8 @@ sub migrate_db {
     my ($self) = @_;
 
     if ( $self->migrate == 1 || $self->migrate_and_populate == 1 ) {
-        my $result = scalar run(
-            command => $self->_full_sqlite_cmd( $self->schema_sql_path ),
-            verbose => 1
-        );
+        my $result = $self->carton_execute(
+            $self->_full_sqlite_cmd( $self->schema_sql_path ) );
 
         return $result;
     }
@@ -70,42 +68,37 @@ sub migrate_db {
 # should be called AFTER $self->migrate_db
 sub populate_db {
     my ($self) = @_;
-    my $result = scalar run(
-        command => $self->_full_sqlite_cmd( $self->schema_sql_populate_path ),
-        verbose => 1
-    );
+
+    my $result = $self->carton_execute(
+        $self->_full_sqlite_cmd( $self->schema_sql_populate_path ) );
 
     return $result;
 }
 
 sub call_model_creator_helper {
     my ($self) = @_;
+
     my $full_sqlite_dsn = $self->_sqlite_dsn . $self->sqlite_db_path;
     my $create_helper_script_path = './script/neurolandia_catalyst_create.pl';
-    my $perl_invoker              = 'perl ';
 
-    if ( ( $self->use_carton == 1 ) ) {
-        $perl_invoker = 'carton exec perl ';
-    }
-
-    return 1
-        if system( $perl_invoker
-            . $create_helper_script_path
+    my $result
+        = $self->carton_execute( $create_helper_script_path
             . ' model '
             . $self->model_name
             . ' DBIC::Schema '
             . $self->schema_name
             . ' create=static '
             . $full_sqlite_dsn
-            . ' on_connect_do="PRAGMA foreign_keys = ON"' )
-        == $EXIT_STATUS_OK;
+            . ' on_connect_do="PRAGMA foreign_keys = ON"' );
+
+    return $result;
 }
 
 sub migrate_schema_and_model {
     my ($self) = @_;
 
     if ( $self->migrate == 1 || $self->migrate_and_populate == 1 ) {
-        $self->call_model_creator_helper;
+        return $self->call_model_creator_helper;
     }
     else {
         return 0;

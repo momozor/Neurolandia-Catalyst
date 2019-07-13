@@ -45,12 +45,20 @@ Run external command with carton.
 sub carton_execute {
     my ( $self, $cli ) = @_;
 
-    my $CARTON_OK = can_run('carton')
-        or die "carton binary doesn't exist in PATH\n";
-    my $result
-        = scalar run( command => "$CARTON_OK exec $cli", verbose => 1 );
+    my $is_carton_ok = $self->use_carton;
+    if ($is_carton_ok) {
+        my $CARTON_OK = can_run('carton');
+        my $result
+            = scalar run( command => "$CARTON_OK exec $cli", verbose => 1 );
+        print "I USE CARTON!\n";
 
-    return $result;
+        return $result;
+    }
+
+    elsif ( !$is_carton_ok ) {
+        my $result = scalar run( command => "$cli", verbose => 1 );
+        return $result;
+    }
 }
 
 =head1 AUTHOR
