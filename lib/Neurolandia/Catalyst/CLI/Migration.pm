@@ -57,7 +57,7 @@ sub migrate_db {
     my ($self) = @_;
 
     if ( $self->migrate == 1 || $self->migrate_and_populate == 1 ) {
-        my $result = $self->carton_execute(
+        my $result = $self->auto_execute(
             $self->_full_sqlite_cmd( $self->schema_sql_path ) );
 
         return $result;
@@ -69,7 +69,7 @@ sub migrate_db {
 sub populate_db {
     my ($self) = @_;
 
-    my $result = $self->carton_execute(
+    my $result = $self->auto_execute(
         $self->_full_sqlite_cmd( $self->schema_sql_populate_path ) );
 
     return $result;
@@ -82,7 +82,7 @@ sub call_model_creator_helper {
     my $create_helper_script_path = './script/neurolandia_catalyst_create.pl';
 
     my $result
-        = $self->carton_execute( $create_helper_script_path
+        = $self->auto_execute( $create_helper_script_path
             . ' model '
             . $self->model_name
             . ' DBIC::Schema '

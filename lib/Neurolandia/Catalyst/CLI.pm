@@ -15,7 +15,7 @@ Neurolandia::Catalyst::CLI - A role for command-line operations.
 An abstract class to be inherited with any command-line classes.
 
 It uses MooseX::Getopt role to enable typical command-line functionalities. Please see the
-documentation for the module.
+documentation of MooseX::Getopt for further informations.
 
 =head1 ATTRIBUTES/PROPERTIES
 
@@ -25,7 +25,7 @@ A boolean attribute. If enabled, run external perl scripts, etc with carton.
 
 =head2 verbose
 
-Please see the documentation of 'verbose' in MooseX::Getopt.
+Please see the documentation of 'verbose' attribute in MooseX::Getopt.
 
 =cut
 
@@ -34,15 +34,16 @@ has 'verbose'    => ( is => 'rw', isa => 'Bool', default => 0 );
 
 =head1 METHODS
 
-=head2 carton_execute $cli
+=head2 auto_execute $cli
 
-Run external command with carton.
+Automatically run external shell command with either 'carton exec $cli'
+or not. Depends on the $self->use_carton state. 
 
 =head3 $cli - An external command string
 
 =cut
 
-sub carton_execute {
+sub auto_execute {
     my ( $self, $cli ) = @_;
 
     my $is_carton_ok = $self->use_carton;
@@ -50,13 +51,13 @@ sub carton_execute {
         my $CARTON_OK = can_run('carton');
         my $result
             = scalar run( command => "$CARTON_OK exec $cli", verbose => 1 );
-        print "I USE CARTON!\n";
 
         return $result;
     }
 
     elsif ( !$is_carton_ok ) {
         my $result = scalar run( command => "$cli", verbose => 1 );
+
         return $result;
     }
 }
@@ -68,5 +69,7 @@ Momozor
 =head1 LICENSE
 
 =cut
+
+__PACKAGE__->meta->make_immutable;
 
 1;

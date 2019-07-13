@@ -10,10 +10,10 @@ my $verbose_test    = 'prove -wlv ';
 
 if ( $app->is_test_path_correct ) {
     if ( $app->verbose ) {
-        $app->carton_execute( $verbose_test . $app->test_path );
+        $app->auto_execute( $verbose_test . $app->test_path );
     }
     else {
-        $app->carton_execute( $no_verbose_test . $app->test_path );
+        $app->auto_execute( $no_verbose_test . $app->test_path );
     }
 }
 

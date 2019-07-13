@@ -14,7 +14,7 @@ sub run_create_tables_db {
 }
 
 sub run_model_and_schema_migration {
-    if ( !$app->migrate_schema_and_model) {
+    if ( !$app->migrate_schema_and_model ) {
         warn "[WARNING]: Cannot overwrite schema file!\n";
     }
     else {
