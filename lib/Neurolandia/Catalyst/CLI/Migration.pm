@@ -39,8 +39,7 @@ has '_supported_dbs_list' => (
 );
 has '_sqlite_dsn' => ( is => 'ro', isa => 'Str', default => 'dbi:SQLite:' );
 
-my $EXIT_STATUS_OK = 0;
-my $SQLITE_OK      = can_run('sqlite3')
+my $SQLITE_OK = can_run('sqlite3')
     or die "sqlite3 binary doesn't exist in PATH\n";
 
 sub _full_sqlite_cmd {
