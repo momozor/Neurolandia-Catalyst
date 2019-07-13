@@ -18,7 +18,8 @@ install:
     - cpanm --quiet --notest --skip-satisfied Devel::Cover::Report::Codecov
 
 script:
-    - "perl ./script/neurolandia_catalyst_migrate.pl"
+    - "rm -rf ./lib/NCSchema* ./lib/Neurolandia/Catalyst/Model/NCModel.pm t/model*"
+    - "perl ./script/neurolandia_catalyst_migration.pl --migrate_and_populate"
     - "perl ./script/neurolandia_catalyst_test_more.pl --verbose"
     - "perl ./script/neurolandia_catalyst_test_more.pl --verbose --use_carton"
     - "carton exec perl ./script/neurolandia_catalyst_test_more.pl --verbose --use_carton"
