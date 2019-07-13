@@ -46,7 +46,10 @@ my $SQLITE_OK      = can_run('sqlite3')
 sub _full_sqlite_cmd {
     my ( $self, $sql_schema_type ) = @_;
 
-    return $SQLITE_OK . $self->sqlite_db_path . ' < ' . $sql_schema_type;
+    return
+          $SQLITE_OK . ' '
+        . $self->sqlite_db_path . ' < '
+        . $sql_schema_type;
 }
 
 # create the tables
