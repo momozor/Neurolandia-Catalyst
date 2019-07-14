@@ -8,11 +8,11 @@ with 'MooseX::Getopt';
 
 =head1 NAME
 
-Neurolandia::Catalyst::CLI - A role for command-line operations.
+Neurolandia::Catalyst::CLI - A superclass for command-line operations.
 
 =head1 DESCRIPTION
 
-An abstract class to be inherited with any command-line classes.
+A superclass to be inherited with any command-line subclasses.
 
 It uses MooseX::Getopt role to enable typical command-line functionalities. Please see the
 documentation of MooseX::Getopt for further informations.
@@ -64,9 +64,13 @@ sub auto_execute {
 
 =head1 AUTHOR
 
-Momozor
+Copyright (c) 2019, Momozor
+
+All rights reserved.
 
 =head1 LICENSE
+
+This open source software is released under the BSD 3-Clause License.
 
 =cut
 
