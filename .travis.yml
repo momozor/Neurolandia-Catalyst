@@ -24,6 +24,7 @@ script:
     - "perl ./script/neurolandia_catalyst_test_more.pl --verbose --use_carton"
     - "carton exec perl ./script/neurolandia_catalyst_test_more.pl --verbose --use_carton"
     - "perl Makefile.PL"
+    - "rm -rf ./local"
     - cover -test
 
 after_success:
