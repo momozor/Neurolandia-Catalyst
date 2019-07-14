@@ -1,5 +1,6 @@
 requires 'Carton';
 requires 'Catalyst';
+requires 'Catalyst::Authentication::Realm::SimpleDB';
 requires 'Catalyst::Devel';
 requires 'Catalyst::Model::DBIC::Schema';
 requires 'Catalyst::Plugin::Authentication';
