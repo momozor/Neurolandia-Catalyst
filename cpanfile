@@ -20,3 +20,4 @@ requires 'MooseX::NonMoose';
 requires 'Perl::Tidy';
 requires 'Test::Code::TidyAll';
 requires 'Test::WWW::Mechanize::Catalyst';
+requires 'DBIx::Class::Schema::Loader';
