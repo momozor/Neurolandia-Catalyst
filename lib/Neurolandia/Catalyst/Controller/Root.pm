@@ -63,6 +63,7 @@ A controller that handles generic and dynamic landing pages.
 index action. Handles '/' route.
 
 =cut
+
 sub index : Path : Args(0) {
     my ( $self, $c ) = @_;
 
@@ -84,12 +85,12 @@ sub about : Local {
     $c->stash( { template => 'about.html' } );
 }
 
-
 =head2 default
 
 default action. This is a global action for error page.
 
 =cut
+
 sub default : Path {
     my ( $self, $c ) = @_;
 

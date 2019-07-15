@@ -47,7 +47,6 @@ elsif ( $app->migrate_and_populate != 0 ) {
 }
 
 elsif ($app->migrate != 1
-    && $app->rollback != 1
     && $app->migrate_and_populate != 1 )
 {
     $app->print_usage_text( $app->usage );

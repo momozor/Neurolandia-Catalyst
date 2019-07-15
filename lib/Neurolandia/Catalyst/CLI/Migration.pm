@@ -18,7 +18,6 @@ has 'migrate_and_populate' => (
     default => 0
 );
 
-has 'rollback' => ( 'is' => 'rw', 'isa' => 'Bool', default => 0 );
 has 'sqlite_db_path' =>
     ( is => 'rw', isa => 'Str', default => './var/database.db' );
 has 'schema_sql_path' =>
@@ -27,16 +26,6 @@ has 'schema_sql_populate_path' =>
     ( is => 'rw', isa => 'Str', default => './sql/NCSchemaPopulate.sql' );
 has 'schema_name' => ( is => 'rw', isa => 'Str', default => 'NCSchema' );
 has 'model_name'  => ( is => 'rw', isa => 'Str', default => 'NCModel' );
-has 'db_user'     => ( is => 'rw', isa => 'Str', default => '' );
-has 'db_password' => ( is => 'rw', isa => 'Str', default => '' );
-has 'db_target'   => ( is => 'rw', isa => 'Str', default => 'sqlite' );
-has '_supported_dbs_list' => (
-    is      => 'ro',
-    isa     => 'ArrayRef',
-    default => sub {
-        return [ 'sqlite', 'mysql' ];
-    }
-);
 has '_sqlite_dsn' => ( is => 'ro', isa => 'Str', default => 'dbi:SQLite:' );
 
 my $SQLITE_OK = can_run('sqlite3')
