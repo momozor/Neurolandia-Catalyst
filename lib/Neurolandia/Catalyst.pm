@@ -28,6 +28,7 @@ use Catalyst qw/
     Session
     Session::Store::File
     Session::State::Cookie
+    EnableMiddleware
     /;
 
 extends 'Catalyst';
@@ -42,6 +43,12 @@ our $VERSION = '0.0.1';
 # details given here can function as a default configuration,
 # with an external configuration file acting as an override for
 # local deployment.
+
+__PACKAGE__->config(
+    'Plugin::EnableMiddleware' => [ qw(
+        Session
+        CSRFBlock) ]
+);
 
 __PACKAGE__->config(
     name => 'Neurolandia::Catalyst',
