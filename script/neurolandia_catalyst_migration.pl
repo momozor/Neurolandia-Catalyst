@@ -29,12 +29,12 @@ sub run_populate_created_tables_db {
     say '[SUCCESS]: SQLite database has been populated with test fixtures.';
 }
 
-if ( $app->migrate != 0 ) {
+if ( $app->migrate ) {
     run_create_tables_db;
     run_model_and_schema_migration;
 }
 
-elsif ( $app->migrate_and_populate != 0 ) {
+elsif ( $app->migrate_and_populate ) {
     run_create_tables_db;
     run_populate_created_tables_db;
 
@@ -46,8 +46,8 @@ elsif ( $app->migrate_and_populate != 0 ) {
     run_model_and_schema_migration;
 }
 
-elsif ($app->migrate != 1
-    && $app->migrate_and_populate != 1 )
+elsif (!$app->migrate
+    && !$app->migrate_and_populate )
 {
     $app->print_usage_text( $app->usage );
 }
