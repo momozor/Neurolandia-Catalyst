@@ -44,7 +44,7 @@ sub _full_sqlite_cmd {
 sub migrate_db {
     my ($self) = @_;
 
-    if ( $self->migrate == 1 || $self->migrate_and_populate == 1 ) {
+    if ( $self->migrate || $self->migrate_and_populate ) {
         my $result = $self->auto_execute(
             $self->_full_sqlite_cmd( $self->schema_sql_path ) );
 
@@ -85,7 +85,7 @@ sub call_model_creator_helper {
 sub migrate_schema_and_model {
     my ($self) = @_;
 
-    if ( $self->migrate == 1 || $self->migrate_and_populate == 1 ) {
+    if ( $self->migrate || $self->migrate_and_populate) {
         return $self->call_model_creator_helper;
     }
     else {
