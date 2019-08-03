@@ -47,7 +47,8 @@ our $VERSION = '0.0.1';
 __PACKAGE__->config(
     'Plugin::EnableMiddleware' => [ qw(
         Session
-    CSRFBlock) ]
+        CSRFBlock
+    ) ]
 );
 
 __PACKAGE__->config(
