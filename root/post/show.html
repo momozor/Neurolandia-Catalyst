@@ -1,4 +1,7 @@
 [% title = post.title %]
-[% post.title %] | [% post.content %] |
-<a href="[% c.uri_for(c.controller('Post').action_for('edit_form')) %]/[% post.id %]">Edit</a>
+[% post.title %] | [% post.content %] 
+
+[% IF c.user_exists %]
+| <a href="[% c.uri_for(c.controller('Post').action_for('edit_form')) %]/[% post.id %]">Edit</a>
 | <a href="[% c.uri_for(c.controller('Post').action_for('delete')) %]/[% post.id %]">Delete</a>
+[% END %]
