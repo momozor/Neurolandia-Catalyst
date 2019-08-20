@@ -22,3 +22,6 @@ requires 'Perl::Tidy';
 requires 'Plack::Middleware::CSRFBlock';
 requires 'Test::Code::TidyAll';
 requires 'Test::WWW::Mechanize::Catalyst';
+requires 'Catalyst::Plugin::EnableMiddleware';
+requires 'Plack::Middleware::Session';
+requires 'Term::Size::Any';
