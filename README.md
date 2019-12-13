@@ -11,7 +11,7 @@ Requirements
 ------------
 * (first time) Working internet connection to download Perl dependencies
 from CPAN (or now, MetaCPAN)
-* At least perl 5.10+
+* At least perl 5.22+
 * cpanm
 * sqlite3
 * (Optional) Carton
