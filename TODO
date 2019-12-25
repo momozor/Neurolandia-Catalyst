@@ -1,3 +1,5 @@
 * include an 'overwrite' or 'override' option to migration helper script
 * make an exception class for CLI::Testing->is_test_path_correct and CLI->carton_execute
-* settle front-end design (uh,..urgh)
+* settle front-end design (uh,..urgh
+
+* tell posts creation and published dates)
