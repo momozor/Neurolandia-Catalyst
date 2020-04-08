@@ -357,6 +357,7 @@ DISTRIBUTIONS
     requirements:
       Carp::Clan 0
       Catalyst::Component::InstancePerContext 0
+      Catalyst::Devel 1.0
       Catalyst::Runtime 5.80005
       CatalystX::Component::Traits 0.14
       DBD::SQLite 0
@@ -936,6 +937,7 @@ DISTRIBUTIONS
       Config::Any::XML undef
       Config::Any::YAML undef
     requirements:
+      Config::General 2.47
       Module::Pluggable::Object 3.6
   Config-General-2.63
     pathname: T/TL/TLINDEN/Config-General-2.63.tar.gz
@@ -983,6 +985,22 @@ DISTRIBUTIONS
       Module::Build::Tiny 0.035
       URI::Escape 0
       perl 5.008001
+  Cpanel-JSON-XS-4.19
+    pathname: R/RU/RURBAN/Cpanel-JSON-XS-4.19.tar.gz
+    provides:
+      Cpanel::JSON::XS 4.19
+      Cpanel::JSON::XS::Type undef
+    requirements:
+      Carp 0
+      Config 0
+      Encode 1.9801
+      Exporter 0
+      ExtUtils::MakeMaker 0
+      Pod::Text 2.08
+      XSLoader 0
+      overload 0
+      strict 0
+      warnings 0
   DBD-SQLite-1.62
     pathname: I/IS/ISHIGAKI/DBD-SQLite-1.62.tar.gz
     provides:
@@ -1535,7 +1553,6 @@ DISTRIBUTIONS
     requirements:
       ExtUtils::MakeMaker 0
       Mail::Address 0
-      Net::DNS 0
       Scalar::Util 0
       Test::More 0
       perl 5.006
@@ -2147,6 +2164,7 @@ DISTRIBUTIONS
       JSON::MaybeXS 1.004000
     requirements:
       Carp 0
+      Cpanel::JSON::XS 2.3310
       ExtUtils::MakeMaker 0
       JSON::PP 2.27300
       Scalar::Util 0
@@ -3529,122 +3547,6 @@ DISTRIBUTIONS
       perl 5.006
       strict 0
       warnings 0
-  Net-DNS-1.20
-    pathname: N/NL/NLNETLABS/Net-DNS-1.20.tar.gz
-    provides:
-      Net::DNS 1.20
-      Net::DNS::Domain 1726
-      Net::DNS::DomainName 1605
-      Net::DNS::DomainName1035 1605
-      Net::DNS::DomainName2535 1605
-      Net::DNS::Header 1709
-      Net::DNS::Mailbox 1605
-      Net::DNS::Mailbox1035 1605
-      Net::DNS::Mailbox2535 1605
-      Net::DNS::Nameserver 1692
-      Net::DNS::Packet 1714
-      Net::DNS::Parameters 1729
-      Net::DNS::Question 1726
-      Net::DNS::RR 1726
-      Net::DNS::RR::A 1597
-      Net::DNS::RR::AAAA 1597
-      Net::DNS::RR::AFSDB 1597
-      Net::DNS::RR::APL 1597
-      Net::DNS::RR::APL::Item 1597
-      Net::DNS::RR::CAA 1597
-      Net::DNS::RR::CDNSKEY 1586
-      Net::DNS::RR::CDS 1586
-      Net::DNS::RR::CERT 1729
-      Net::DNS::RR::CNAME 1597
-      Net::DNS::RR::CSYNC 1597
-      Net::DNS::RR::DHCID 1597
-      Net::DNS::RR::DLV 1528
-      Net::DNS::RR::DNAME 1597
-      Net::DNS::RR::DNSKEY 1729
-      Net::DNS::RR::DS 1729
-      Net::DNS::RR::EUI48 1597
-      Net::DNS::RR::EUI64 1597
-      Net::DNS::RR::GPOS 1528
-      Net::DNS::RR::HINFO 1597
-      Net::DNS::RR::HIP 1597
-      Net::DNS::RR::IPSECKEY 1718
-      Net::DNS::RR::ISDN 1597
-      Net::DNS::RR::KEY 1528
-      Net::DNS::RR::KX 1597
-      Net::DNS::RR::L32 1597
-      Net::DNS::RR::L64 1597
-      Net::DNS::RR::LOC 1597
-      Net::DNS::RR::LP 1597
-      Net::DNS::RR::MB 1528
-      Net::DNS::RR::MG 1528
-      Net::DNS::RR::MINFO 1597
-      Net::DNS::RR::MR 1528
-      Net::DNS::RR::MX 1597
-      Net::DNS::RR::NAPTR 1597
-      Net::DNS::RR::NID 1597
-      Net::DNS::RR::NS 1597
-      Net::DNS::RR::NSEC 1696
-      Net::DNS::RR::NSEC3 1726
-      Net::DNS::RR::NSEC3PARAM 1597
-      Net::DNS::RR::NULL 1528
-      Net::DNS::RR::OPENPGPKEY 1597
-      Net::DNS::RR::OPT 1717
-      Net::DNS::RR::OPT::CHAIN 1717
-      Net::DNS::RR::OPT::CLIENT_SUBNET 1717
-      Net::DNS::RR::OPT::COOKIE 1717
-      Net::DNS::RR::OPT::DAU 1717
-      Net::DNS::RR::OPT::DHU 1717
-      Net::DNS::RR::OPT::EXPIRE 1717
-      Net::DNS::RR::OPT::KEY_TAG 1717
-      Net::DNS::RR::OPT::N3U 1717
-      Net::DNS::RR::OPT::PADDING 1717
-      Net::DNS::RR::OPT::TCP_KEEPALIVE 1717
-      Net::DNS::RR::PTR 1597
-      Net::DNS::RR::PX 1597
-      Net::DNS::RR::RP 1597
-      Net::DNS::RR::RRSIG 1729
-      Net::DNS::RR::RT 1597
-      Net::DNS::RR::SIG 1729
-      Net::DNS::RR::SMIMEA 1597
-      Net::DNS::RR::SOA 1597
-      Net::DNS::RR::SPF 1593
-      Net::DNS::RR::SRV 1597
-      Net::DNS::RR::SSHFP 1597
-      Net::DNS::RR::TKEY 1528
-      Net::DNS::RR::TLSA 1597
-      Net::DNS::RR::TSIG 1726
-      Net::DNS::RR::TXT 1597
-      Net::DNS::RR::URI 1597
-      Net::DNS::RR::X25 1597
-      Net::DNS::Resolver 1726
-      Net::DNS::Resolver::Base 1727
-      Net::DNS::Resolver::MSWin32 1568
-      Net::DNS::Resolver::Recurse 1737
-      Net::DNS::Resolver::UNIX 1573
-      Net::DNS::Resolver::android 1568
-      Net::DNS::Resolver::cygwin 1719
-      Net::DNS::Resolver::os2 1568
-      Net::DNS::Resolver::os390 1719
-      Net::DNS::Text 1726
-      Net::DNS::Update 1726
-      Net::DNS::ZoneFile 1709
-      Net::DNS::ZoneFile::Generator 1709
-      Net::DNS::ZoneFile::Text 1709
-    requirements:
-      Digest::HMAC 1.03
-      Digest::MD5 2.13
-      Digest::SHA 5.23
-      ExtUtils::MakeMaker 0
-      File::Spec 0.86
-      IO::File 1.08
-      IO::Select 1.14
-      IO::Socket::IP 0.38
-      MIME::Base64 2.13
-      PerlIO 1.05
-      Scalar::Util 1.25
-      Test::More 0.52
-      Time::Local 1.19
-      perl 5.006
   Net-HTTP-6.19
     pathname: O/OA/OALDERS/Net-HTTP-6.19.tar.gz
     provides:
@@ -4003,16 +3905,6 @@ DISTRIBUTIONS
       Perl::Tidy::VerticalAligner::Line 20190601
     requirements:
       ExtUtils::MakeMaker 0
-  PerlIO-utf8_strict-0.007
-    pathname: L/LE/LEONT/PerlIO-utf8_strict-0.007.tar.gz
-    provides:
-      PerlIO::utf8_strict 0.007
-    requirements:
-      ExtUtils::MakeMaker 0
-      XSLoader 0
-      perl 5.008
-      strict 0
-      warnings 0
   Plack-1.0047
     pathname: M/MI/MIYAGAWA/Plack-1.0047.tar.gz
     provides:

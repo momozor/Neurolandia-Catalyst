@@ -23,12 +23,13 @@
 
           <a class="blog-nav-item" href="[% c.uri_for(c.controller('Root').action_for('index')) %]">Home</a>
           <a class="blog-nav-item" href="[% c.uri_for(c.controller('Root').action_for('about')) %]">About</a>
-            [% IF c.user_exists %]
-            <a class="blog-nav-item"href="[% c.uri_for(c.controller('User').action_for('logout')) %]">Logout</a>
-            <a class="blog-nav-item" href="#">Logged in as <span style="color: lime">[% c.user.username %]</span></a>
-            [% ELSE %]
-            <a class="blog-nav-item" href="[% c.uri_for(c.controller('User').action_for('login_form')) %]">Login</a>
-            [% END %]
+          [% IF c.user_exists %]
+          <a class="blog-nav-item" href="[% c.uri_for(c.controller('Post').action_for('create_form')) %]">Create</a>
+          <a class="blog-nav-item" href="[% c.uri_for(c.controller('User').action_for('logout')) %]">Logout</a>
+          <a class="blog-nav-item" href="#">Logged in as <span style="color: lime">[% c.user.username %]</span></a>
+          [% ELSE %]
+          <a class="blog-nav-item" href="[% c.uri_for(c.controller('User').action_for('login_form')) %]">Login</a>
+          [% END %]
           
         </nav>
       </div>
@@ -37,7 +38,7 @@
     <div class="container">
       <div class="blog-header">
         <h1 class="blog-title">Neurolandia</h1>
-        <p class="lead blog-description">Kitteh, where are you? :3</p>
+        <p class="lead blog-description">A place of madness</p>
       </div>
       <div class="row">
         <div class="col-sm-8 blog-main">
