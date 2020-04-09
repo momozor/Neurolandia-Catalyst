@@ -2,3 +2,4 @@
 inc/
 local/
 script/var/
+*.new

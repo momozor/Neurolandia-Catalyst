@@ -26,3 +26,4 @@ requires 'Catalyst::Plugin::EnableMiddleware';
 requires 'Plack::Middleware::Session';
 requires 'Term::Size::Any';
 requires 'MooseX::Modern';
+requires 'DateTime::Format::SQLite';

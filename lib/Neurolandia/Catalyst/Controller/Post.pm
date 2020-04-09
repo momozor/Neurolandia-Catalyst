@@ -1,5 +1,6 @@
 package Neurolandia::Catalyst::Controller::Post;
 use MooseX::Modern;
+use DateTime;
 use Neurolandia::Catalyst::Utils::Controller::Post;
 
 BEGIN { extends 'Catalyst::Controller' }
@@ -44,6 +45,7 @@ sub create : Local {
             {
                 title   => $title,
                 content => $content,
+                create_date => DateTime->now,
                 user_id => $user_id
             }
         );

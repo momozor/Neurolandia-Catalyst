@@ -5,7 +5,7 @@
   [% FOREACH post IN posts %]
   <div class="blog-post">
     <h2 class="blog-post-title"><a href="[% c.uri_for(c.controller('Post').action_for('show')) %]/[% post.id %]">[% post.title %]</a></h2>
-    <p class="blog-post-meta">DATE by <a href="#">[% c.model('NCModel::User').find(post.user_id).username %]</a></p>
+    <p class="blog-post-meta">[% post.create_date.ymd('/') %] - by <a href="#">[% c.model('NCModel::User').find(post.user_id).username %]</a></p>
 
     <p>[% post.content %]</p>
     
