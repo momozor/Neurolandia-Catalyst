@@ -7,12 +7,12 @@ core Wordpress application.
 
 Testing
 -------
-Neurolandia::Catalyst (NC) development sees testing as one of the most important
-technique for the past and the coming future.
+Neurolandia::Catalyst (NC) development sees automated testing as one of the
+most important technique for the past and the coming future.
 
 Run prove -wl t to run the test *after* you ran the migration script.
 
 Local Server
 ------------
-You can see how it works and looks in your browser at https://127.0.0.1:3000 by
+You can see how it works and looks in your browser at http://127.0.0.1:3000 by
 running script/neurolandia_catalyst_server.pl.
