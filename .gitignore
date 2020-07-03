@@ -1,0 +1,4 @@
+var/
+local/
+*.db
+*.sqlite*
