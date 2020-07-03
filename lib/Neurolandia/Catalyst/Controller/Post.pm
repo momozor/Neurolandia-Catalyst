@@ -23,7 +23,7 @@ Catalyst Controller.
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-    
+
     $c->stash( {template => 'post/list.tt', posts => [$c->model('NCModel::Post')->all]} );
 }
 
@@ -36,9 +36,25 @@ sub show :Chained('/') :PathPart('post/show') :Args(1) {
 }
 
 sub create_form :Local {
-    my ( $self, $c) = @_;
+    my ( $self, $c ) = @_;
     
     $c->stash( {template => 'post/create_form.tt'} );
+}
+
+sub create :Local {
+    my ($self, $c ) = @_;
+
+    my $title = $c->request->params->{title};
+    my $content = $c->request->params->{content};
+    my $author = $c->request->params->{author};
+
+    my $post = $c->model('NCModel::Post')->create({
+        title => $title,
+        content => $content,
+        author => $author,
+                                                  });
+
+    $c->stash({template => 'post/create_done.tt', post => $post});
 }
 
 =encoding utf8
