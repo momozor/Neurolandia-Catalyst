@@ -3,6 +3,7 @@
 
 <ul>
 [% FOREACH post IN posts %]
-  <li>[% post.title %] | [% post.content %] | [% post.author %]</li>
+  <li>[% post.title %] | [% post.content %] | [% post.author %] |
+  <a href="/post/show/[% post.title %]">Inspect</a></li>
 [% END %]
 <ul>
