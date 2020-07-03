@@ -27,7 +27,15 @@ sub index :Path :Args(0) {
     $c->stash( {template => 'post/list.tt', posts => [$c->model('NCModel::Post')->all]} );
 }
 
-sub create :Local {
+sub show :Chained('/') :PathPart('post/show') :Args(1) {
+    my ( $self, $c, $title ) = @_;
+
+    my $post = $c->model('NCModel::Post')->find({title => $title});
+    
+    $c->stash( {template => 'post/show.tt', post => $post} );
+}
+
+sub create_form :Local {
     my ( $self, $c) = @_;
     
     $c->stash( {template => 'post/create_form.tt'} );

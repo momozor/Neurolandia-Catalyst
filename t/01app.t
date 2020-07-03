@@ -11,6 +11,7 @@ ok( request('/site')->is_success );
 ok( request('/site/about')->is_success );
 
 ok( request('/post')->is_success );
-ok( request('/post/create')->is_success );
+ok( request('/post/create_form')->is_success );
+ok( request('/post/show/1')->is_success );
  
 done_testing();
