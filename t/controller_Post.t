@@ -2,7 +2,6 @@ use strict;
 use warnings;
 use Test::More;
 
-
 use Catalyst::Test 'Neurolandia::Catalyst';
 use Neurolandia::Catalyst::Controller::Post;
 

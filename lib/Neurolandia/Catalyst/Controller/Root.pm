@@ -34,6 +34,12 @@ sub index :Path :Args(0) {
     $c->stash( {template => 'home.tt'} );
 }
 
+sub about :Local {
+    my ( $self, $c ) = @_;
+
+    $c->stash( {template => 'about.tt'} );
+}
+
 =head2 default
 
 Standard 404 error page
