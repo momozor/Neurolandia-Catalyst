@@ -5,12 +5,24 @@ It is a blog with typical CRUD operations, authentication and authorization.
 No registration is included due to the concept of the web app being similar to the
 core Wordpress application.
 
+Requirements
+------------
+* (first time) Working internet connection to download Perl dependencies
+from CPAN (or now, MetaCPAN)
+* At least perl 5.10+
+* cpanm
+* (Optional) Carton
+
 Testing
 -------
 Neurolandia::Catalyst (NC) development sees automated testing as one of the
 most important technique for the past and the coming future.
 
-Run prove -wl t to run the test *after* you ran the migration script.
+1. First, migrate the schema by running the
+./script/neurolandia_catalyst_migrate.pl script.
+
+2. Run ./script/neurolandia_catalyst_test_more.pl to run the tests *after*
+you ran the migration script
 
 Local Server
 ------------
