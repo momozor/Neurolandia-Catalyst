@@ -1,1 +1,18 @@
-Run script/neurolandia_catalyst_server.pl to test the application.
+Neurolandia::Catalyst
+---------------------
+Neurolandia::Catalyst is a revamped version of Neurolandia Mojolicious that I made.
+It is a blog with typical CRUD operations, authentication and authorization.
+No registration is included due to the concept of the web app being similar to the
+core Wordpress application.
+
+Testing
+-------
+Neurolandia::Catalyst (NC) development sees testing as one of the most important
+technique for the past and the coming future.
+
+Run prove -wl t to run the test *after* you ran the migration script.
+
+Local Server
+------------
+You can see how it works and looks in your browser at https://127.0.0.1:3000 by
+running script/neurolandia_catalyst_server.pl.

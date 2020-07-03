@@ -15,6 +15,8 @@ use Catalyst::Runtime 5.80;
 #                 application's home directory
 # Static::Simple: will serve static files from the application's root
 #                 directory
+#
+#     StackTrace: will show error and stacktrace output in browser
 
 use Catalyst qw/
     -Debug
@@ -26,7 +28,7 @@ use Catalyst qw/
 
 extends 'Catalyst';
 
-our $VERSION = '0.01';
+our $VERSION = '0.0.1';
 
 # Configure the application.
 #

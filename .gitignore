@@ -1,4 +1,5 @@
 var/
 local/
+inc/
 *.db
 *.sqlite*
