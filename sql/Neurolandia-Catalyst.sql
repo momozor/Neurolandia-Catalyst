@@ -1,5 +1,0 @@
-CREATE TABLE Post(
-    author VARCHAR(255) NOT NULL,
-    title VARCHAR(255) NOT NULL,
-    content VARCHAR(255) NOT NULL
-);
