@@ -65,8 +65,6 @@ sub edit_form :Chained('/') :PathPart('post/edit_form') :Args(1) {
     $c->stash( {template => 'post/edit_form.tt', post => $post} );
 }
 
-
-# FIXME edit process doesn't work
 sub edit :Local {
     my ( $self, $c ) = @_;
 
@@ -79,6 +77,7 @@ sub edit :Local {
     $post->title($title);
     $post->content($content);
     $post->author($author);
+    $post->update;
 
     $c->stash( {template => 'post/edit_done.tt', post => $post} );
 }
