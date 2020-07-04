@@ -16,84 +16,91 @@ Catalyst Controller.
 
 =cut
 
-
 =head2 index
 
 =cut
 
 has 'current_post_model' => (
-    is => 'ro',
-    isa => 'Str',
+    is      => 'ro',
+    isa     => 'Str',
     default => 'NCModel::Post',
 );
 
-sub index :Path :Args(0) {
+sub index : Path : Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->stash( {template => 'post/list.tt', posts => [$c->model($self->current_post_model)->all]} );
+    $c->stash(
+        {
+            template => 'post/list.tt',
+            posts    => [ $c->model( $self->current_post_model )->all ]
+        }
+    );
 }
 
-sub show :Chained('/') :PathPart('post/show') :Args(1) {
+sub show : Chained('/') : PathPart('post/show') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
-    my $post = $c->model($self->current_post_model)->find({id => $id});
-    
-    $c->stash( {template => 'post/show.tt', post => $post} );
+    my $post = $c->model( $self->current_post_model )->find( { id => $id } );
+
+    $c->stash( { template => 'post/show.tt', post => $post } );
 }
 
-sub create_form :Local {
+sub create_form : Local {
     my ( $self, $c ) = @_;
-    
-    $c->stash( {template => 'post/create_form.tt'} );
+
+    $c->stash( { template => 'post/create_form.tt' } );
 }
 
-sub create :Local {
+sub create : Local {
     my ( $self, $c ) = @_;
 
-    my $title = $c->request->params->{title};
+    my $title   = $c->request->params->{title};
     my $content = $c->request->params->{content};
-    my $author = $c->request->params->{author};
+    my $author  = $c->request->params->{author};
 
-    my $post = $c->model($self->current_post_model)->create({
-        title => $title,
-        content => $content,
-        author => $author,
-                                                  });
+    my $post = $c->model( $self->current_post_model )->create(
+        {
+            title   => $title,
+            content => $content,
+            author  => $author,
+        }
+    );
 
-    $c->stash( {template => 'post/create_done.tt', post => $post} );
+    $c->stash( { template => 'post/create_done.tt', post => $post } );
 }
 
-sub edit_form :Chained('/') :PathPart('post/edit_form') :Args(1) {
+sub edit_form : Chained('/') : PathPart('post/edit_form') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
-    my $post = $c->model($self->current_post_model)->find( {id => $id} );
+    my $post = $c->model( $self->current_post_model )->find( { id => $id } );
 
-    $c->stash( {template => 'post/edit_form.tt', post => $post} );
+    $c->stash( { template => 'post/edit_form.tt', post => $post } );
 }
 
-sub edit :Local {
+sub edit : Local {
     my ( $self, $c ) = @_;
 
     my $post_id = $c->request->params->{id};
-    my $title = $c->request->params->{title};
+    my $title   = $c->request->params->{title};
     my $content = $c->request->params->{content};
-    my $author = $c->request->params->{author};
+    my $author  = $c->request->params->{author};
 
-    my $post = $c->model($self->current_post_model)->find({id => $post_id});
+    my $post =
+      $c->model( $self->current_post_model )->find( { id => $post_id } );
     $post->title($title);
     $post->content($content);
     $post->author($author);
     $post->update;
 
-    $c->stash( {template => 'post/edit_done.tt', post => $post} );
+    $c->stash( { template => 'post/edit_done.tt', post => $post } );
 }
 
-sub delete :Chained('/') :PathPart('post/delete') :Args(1) {
+sub delete : Chained('/') : PathPart('post/delete') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
-    $c->model($self->current_post_model)->find({id => $id})->delete;
+    $c->model( $self->current_post_model )->find( { id => $id } )->delete;
 
-    $c->stash( {template => 'post/delete_done.tt'} );
+    $c->stash( { template => 'post/delete_done.tt' } );
 }
 
 =encoding utf8
