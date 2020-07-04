@@ -1,4 +1,4 @@
-package Neurolandia::Catalyst::View::Site;
+package Neurolandia::Catalyst::View::HTML;
 use Moose;
 use namespace::autoclean;
 
@@ -11,7 +11,7 @@ __PACKAGE__->config(
 
 =head1 NAME
 
-Neurolandia::Catalyst::View::Site - TT View for Neurolandia::Catalyst
+Neurolandia::Catalyst::View::HTML - TT View for Neurolandia::Catalyst
 
 =head1 DESCRIPTION
 
