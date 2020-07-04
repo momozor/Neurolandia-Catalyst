@@ -8,6 +8,6 @@ use Catalyst::Test 'Neurolandia::Catalyst';
 ok( request('/')->is_success );
 
 ok( request('/site')->is_success );
-ok( request('/site/test')->is_success );
-
+ok( request('/site/about')->is_success );
+    
 done_testing();

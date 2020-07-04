@@ -27,10 +27,12 @@ sub index :Path :Args(0) {
     $c->response->body('Matched Neurolandia::Catalyst::Controller::Site in Site.');
 }
 
-sub test :Local {
+sub about :Local {
     my ( $self, $c ) = @_;
-    $c->stash({template => 'site/test.tt', username => 'Momo'});
+    
+    $c->stash( {template => 'site/about.tt'} );
 }
+
 
 =encoding utf8
 
