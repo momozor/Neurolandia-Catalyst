@@ -9,5 +9,7 @@ ok( request('/')->is_success );
 
 ok( request('/site')->is_success );
 ok( request('/site/about')->is_success );
+
+ok( request('/post')->is_success );
     
 done_testing();
