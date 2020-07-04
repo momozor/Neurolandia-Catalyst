@@ -24,7 +24,7 @@ Catalyst Controller.
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
 
-    $c->stash( {template => 'post/list.tt'} );
+    $c->stash( {template => 'post/list.tt', posts => [$c->model('NCModel::Post')->all]} );
 }
 
 

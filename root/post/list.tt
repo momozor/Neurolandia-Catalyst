@@ -1,2 +1,8 @@
 <h2>Posts List</h2>
 <hr>
+
+<ul>
+  [% FOREACH post IN posts -%]
+    <li>[% post.title %] | [% post.content %] | [% post.author %]</li>
+  [% END -%]
+</ul>
