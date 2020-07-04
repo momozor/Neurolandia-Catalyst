@@ -28,9 +28,9 @@ sub index :Path :Args(0) {
 }
 
 sub show :Chained('/') :PathPart('post/show') :Args(1) {
-    my ( $self, $c, $title ) = @_;
+    my ( $self, $c, $id ) = @_;
 
-    my $post = $c->model('NCModel::Post')->find({title => $title});
+    my $post = $c->model('NCModel::Post')->find({id => $id});
     
     $c->stash( {template => 'post/show.tt', post => $post} );
 }
@@ -58,9 +58,9 @@ sub create :Local {
 }
 
 sub edit_form :Chained('/') :PathPart('post/edit_form') :Args(1) {
-    my ( $self, $c, $title ) = @_;
+    my ( $self, $c, $id ) = @_;
 
-    my $post = $c->model('NCModel::Post')->find( {title => $title} );
+    my $post = $c->model('NCModel::Post')->find( {id => $id} );
 
     $c->stash( {template => 'post/edit_form.tt', post => $post} );
 }

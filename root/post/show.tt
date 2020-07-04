@@ -1,1 +1,2 @@
-[% post.title %] | [% post.content %] | [% post.author %]
+[% post.title %] | [% post.content %] | [% post.author %] |
+<a href="/post/edit_form/[% post.id %]">Edit</a>

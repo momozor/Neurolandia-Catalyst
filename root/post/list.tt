@@ -4,6 +4,6 @@
 <ul>
 [% FOREACH post IN posts %]
   <li>[% post.title %] | [% post.content %] | [% post.author %] |
-  <a href="/post/show/[% post.title %]">Inspect</a></li>
+  <a href="/post/show/[% post.id %]">Inspect</a></li>
 [% END %]
 <ul>
