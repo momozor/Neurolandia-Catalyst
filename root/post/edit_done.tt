@@ -1,0 +1,2 @@
+<h2>Post Successfully Edited</h2>
+[% post.id %] | [% post.title %]

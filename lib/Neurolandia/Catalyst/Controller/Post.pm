@@ -65,6 +65,24 @@ sub edit_form :Chained('/') :PathPart('post/edit_form') :Args(1) {
     $c->stash( {template => 'post/edit_form.tt', post => $post} );
 }
 
+
+# FIXME edit process doesn't work
+sub edit :Local {
+    my ( $self, $c ) = @_;
+
+    my $post_id = $c->request->params->{id};
+    my $title = $c->request->params->{title};
+    my $content = $c->request->params->{content};
+    my $author = $c->request->params->{author};
+
+    my $post = $c->model('NCModel::Post')->find({id => $post_id});
+    $post->title($title);
+    $post->content($content);
+    $post->author($author);
+
+    $c->stash( {template => 'post/edit_done.tt', post => $post} );
+}
+
 =encoding utf8
 
 =head1 AUTHOR
