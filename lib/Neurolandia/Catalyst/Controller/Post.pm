@@ -27,7 +27,11 @@ sub index :Path :Args(0) {
     $c->stash( {template => 'post/list.tt', posts => [$c->model('NCModel::Post')->all]} );
 }
 
+sub create :Local {
+    my ( $self, $c) = @_;
 
+    $c->stash( {template => 'post/create_form.tt'} );
+}
 
 =encoding utf8
 
