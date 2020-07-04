@@ -3,7 +3,7 @@ use warnings;
 use Test::More;
 
 use Catalyst::Test 'Neurolandia::Catalyst';
-use Neurolandia::Catalyst::Controller::Post;
+BEGIN { use_ok('Neurolandia::Catalyst::Controller::Post') }
 
 ok( request('/post')->is_success );
 ok( request('/post/create_form')->is_success );

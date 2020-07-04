@@ -26,14 +26,13 @@ has 'current_post_model' => (
     default => 'NCModel::Post',
 );
 
-
 sub index : Path : Args(0) {
     my ( $self, $c ) = @_;
 
     $c->stash(
         {
             template => 'post/list.tt',
-            posts    => [ $c->model( $self->current_post_model )->all ],
+            posts    => [ $c->model( $self->current_post_model )->all ]
         }
     );
 }
