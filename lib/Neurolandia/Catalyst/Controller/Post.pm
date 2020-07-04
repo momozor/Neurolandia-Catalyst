@@ -82,6 +82,14 @@ sub edit :Local {
     $c->stash( {template => 'post/edit_done.tt', post => $post} );
 }
 
+sub delete :Chained('/') :PathPart('post/delete') :Args(1) {
+    my ( $self, $c, $id ) = @_;
+
+    $c->model('NCModel::Post')->find({id => $id})->delete;
+
+    $c->stash( {template => 'post/delete_done.tt'} );
+}
+
 =encoding utf8
 
 =head1 AUTHOR
