@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Neurolandia</title>
+</head>
+<body>
+
+<div id="content">
+  [% content %]
+</div>
+</body>
+</html>

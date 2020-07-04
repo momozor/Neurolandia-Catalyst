@@ -7,6 +7,7 @@ extends 'Catalyst::View::TT';
 __PACKAGE__->config(
     TEMPLATE_EXTENSION => '.tt',
     render_die => 1,
+    WRAPPER => 'default_layout.tt',
 );
 
 =head1 NAME
