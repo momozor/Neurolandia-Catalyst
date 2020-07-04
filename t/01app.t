@@ -12,6 +12,7 @@ ok( request('/site/about')->is_success );
 
 ok( request('/post')->is_success );
 ok( request('/post/create_form')->is_success );
-ok( request('/post/show/1')->is_success );
+ok( request('/post/show/plip')->is_success );
+ok( request('/post/edit_form/plip')->is_success );
  
 done_testing();

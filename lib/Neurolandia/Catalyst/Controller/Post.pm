@@ -42,7 +42,7 @@ sub create_form :Local {
 }
 
 sub create :Local {
-    my ($self, $c ) = @_;
+    my ( $self, $c ) = @_;
 
     my $title = $c->request->params->{title};
     my $content = $c->request->params->{content};
@@ -54,7 +54,15 @@ sub create :Local {
         author => $author,
                                                   });
 
-    $c->stash({template => 'post/create_done.tt', post => $post});
+    $c->stash( {template => 'post/create_done.tt', post => $post} );
+}
+
+sub edit_form :Chained('/') :PathPart('post/edit_form') :Args(1) {
+    my ( $self, $c, $title ) = @_;
+
+    my $post = $c->model('NCModel::Post')->find( {title => $title} );
+
+    $c->stash( {template => 'post/edit_form.tt', post => $post} );
 }
 
 =encoding utf8

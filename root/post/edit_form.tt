@@ -1,0 +1,6 @@
+<form method="POST" action="#">
+  <input type="text" name="title" value="[% post.title %]">
+  <input type="text" name="content" value="[% post.content %]">
+  <input type="text" name="author" value="[% post.author %]">
+  <button type="submit">Submit</button>
+</form>
