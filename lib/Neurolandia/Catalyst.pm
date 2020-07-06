@@ -23,6 +23,12 @@ use Catalyst qw/
     Static::Simple
 
     StackTrace
+
+    Authentication
+
+    Session
+    Session::Store::File
+    Session::State::Cookie
     /;
 
 extends 'Catalyst';
