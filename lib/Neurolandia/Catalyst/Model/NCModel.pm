@@ -5,11 +5,11 @@ use base 'Catalyst::Model::DBIC::Schema';
 
 __PACKAGE__->config(
     schema_class => 'NCSchema',
-    
+
     connect_info => {
-        dsn => 'dbi:SQLite:./var/database.db',
-        user => '',
-        password => '',
+        dsn           => 'dbi:SQLite:./var/database.db',
+        user          => '',
+        password      => '',
         on_connect_do => q{PRAGMA foreign_keys = ON},
     }
 );
