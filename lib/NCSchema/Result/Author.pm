@@ -1,5 +1,4 @@
 use utf8;
-
 package NCSchema::Result::Author;
 
 # Created by DBIx::Class::Schema::Loader
@@ -45,7 +44,19 @@ __PACKAGE__->table("author");
   is_auto_increment: 1
   is_nullable: 0
 
-=head2 name
+=head2 username
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 255
+
+=head2 email_address
+
+  data_type: 'varchar'
+  is_nullable: 0
+  size: 255
+
+=head2 password
 
   data_type: 'varchar'
   is_nullable: 0
@@ -54,9 +65,14 @@ __PACKAGE__->table("author");
 =cut
 
 __PACKAGE__->add_columns(
-    "id",
-    { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
-    "name", { data_type => "varchar", is_nullable => 0, size => 255 },
+  "id",
+  { data_type => "integer", is_auto_increment => 1, is_nullable => 0 },
+  "username",
+  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "email_address",
+  { data_type => "varchar", is_nullable => 0, size => 255 },
+  "password",
+  { data_type => "varchar", is_nullable => 0, size => 255 },
 );
 
 =head1 PRIMARY KEY
@@ -82,13 +98,16 @@ Related object: L<NCSchema::Result::Post>
 =cut
 
 __PACKAGE__->has_many(
-    "posts", "NCSchema::Result::Post",
-    { "foreign.author_id" => "self.id" },
-    { cascade_copy        => 0, cascade_delete => 0 },
+  "posts",
+  "NCSchema::Result::Post",
+  { "foreign.author_id" => "self.id" },
+  { cascade_copy => 0, cascade_delete => 0 },
 );
 
-# Created by DBIx::Class::Schema::Loader v0.07049 @ 2019-07-06 23:02:33
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:S3Rz+izq60xE3P7qwCjoCg
+
+# Created by DBIx::Class::Schema::Loader v0.07049 @ 2020-07-07 05:15:05
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:YYAy3pb3Pi6tH/ZXjpcEwQ
+
 
 # You can replace this text with custom code or comments, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
