@@ -12,12 +12,11 @@ has 'current_post_model' => (
 # not covered by test
 # note: cannot instantiate context object in test code
 sub get_model_object_by_id {
-    my ( $self, $context, $id ) = @_;
+    my ( $self, $c, $id ) = @_;
 
     Catalyst::Exception->throw('ID is not of type integer!')
         if !$self->is_type_integer($id);
-    return $context->model( $self->current_post_model )
-        ->find( { id => $id } );
+    return $c->model( $self->current_post_model )->find( { id => $id } );
 }
 
 sub is_type_integer {
