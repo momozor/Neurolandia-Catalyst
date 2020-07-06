@@ -77,7 +77,7 @@ sub edit : Local {
 sub delete : Chained('/') : PathPart('post/delete') : Args(1) {
     my ( $self, $c, $id ) = @_;
 
-    $self->post_util->get_model_object_by_id( $c, $id );
+    $self->post_util->get_model_object_by_id( $c, $id )->delete;
 
     $c->stash( { template => 'post/delete_done.html' } );
 }
