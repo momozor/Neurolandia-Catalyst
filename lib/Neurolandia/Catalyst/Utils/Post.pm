@@ -8,15 +8,22 @@ has 'current_post_model' => (
     default => 'NCModel::Post',
 );
 
+# DoC
 # not covered by test
 # note: cannot instantiate context object in test code
 sub get_model_object_by_id {
     my ( $self, $context, $id ) = @_;
 
     Catalyst::Exception->throw('ID is not of type integer!')
-        if $id !~ /[0-9]+/;
+        if !$self->is_type_integer($id);
     return $context->model( $self->current_post_model )
         ->find( { id => $id } );
+}
+
+sub is_type_integer {
+    my ( $self, $data ) = @_;
+
+    return 1 if $data =~ /[0-9]+/;
 }
 
 __PACKAGE__->meta->make_immutable;
