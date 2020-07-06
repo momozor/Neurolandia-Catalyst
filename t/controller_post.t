@@ -15,6 +15,7 @@ $ua1->title_is('Posts Lists | Neurolandia');
 $ua1->get_ok( $root . '/post/create_form' );
 $ua1->title_is('Creation Form | Neurolandia');
 $ua1->get_ok( $root . '/post/show/1' );
+$ua1->title_is('SICP | Neurolandia');
 $ua1->get_ok( $root . '/post/edit_form/1' );
 $ua1->title_is('Edit Form | Neurolandia');
 
