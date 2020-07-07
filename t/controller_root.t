@@ -1,12 +1,18 @@
 use strict;
 use warnings;
-use Test::More tests => 3;
+use Test::More tests => 6;
 
-use Catalyst::Test 'Neurolandia::Catalyst';
+BEGIN {
+    use_ok( 'Test::WWW::Mechanize::Catalyst' => 'Neurolandia::Catalyst' );
+    use_ok('Neurolandia::Catalyst::Controller::Root');
+}
 
-BEGIN { use_ok('Neurolandia::Catalyst::Controller::Root') }
+my $root = 'http://127.0.0.1:3000';
+my $ua1  = Test::WWW::Mechanize::Catalyst->new;
 
-ok( request('/')->is_success );
-ok( request('/about')->is_success );
+$ua1->get_ok( $root . '/' );
+$ua1->title_is('Home | Neurolandia');
+$ua1->get_ok( $root . '/about' );
+$ua1->title_is('About | Neurolandia');
 
 done_testing();
