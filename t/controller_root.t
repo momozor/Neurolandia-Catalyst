@@ -8,11 +8,12 @@ BEGIN {
 }
 
 my $root = 'http://127.0.0.1:3000';
-my $ua1  = Test::WWW::Mechanize::Catalyst->new;
+my $ua   = Test::WWW::Mechanize::Catalyst->new;
 
-$ua1->get_ok( $root . '/' );
-$ua1->title_is('Home | Neurolandia');
-$ua1->get_ok( $root . '/about' );
-$ua1->title_is('About | Neurolandia');
+$ua->get_ok( $root . '/' );
+$ua->title_is('Home | Neurolandia');
+
+$ua->get_ok( $root . '/about' );
+$ua->title_is('About | Neurolandia');
 
 done_testing();
