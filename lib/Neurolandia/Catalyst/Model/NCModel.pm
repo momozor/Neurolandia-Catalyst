@@ -3,13 +3,16 @@ package Neurolandia::Catalyst::Model::NCModel;
 use strict;
 use base 'Catalyst::Model::DBIC::Schema';
 
+my $dsn      = $ENV{NEUROLANDIA_DSN}      ||= 'dbi:SQLite:./var/database.db';
+my $user     = $ENV{NEUROLANDIA_USER}     ||= '';
+my $password = $ENV{NEUROLANDIA_PASSWORD} ||= '';
 __PACKAGE__->config(
     schema_class => 'NCSchema',
 
     connect_info => {
-        dsn           => 'dbi:SQLite:./var/database.db',
-        user          => '',
-        password      => '',
+        dsn           => $dsn,
+        user          => $user,
+        password      => $password,
         on_connect_do => q{PRAGMA foreign_keys = ON},
     }
 );
