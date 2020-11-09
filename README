@@ -44,6 +44,8 @@ you ran the migration script
 You can see how it works and looks in your browser at http://127.0.0.1:3000 by
 running script/neurolandia_catalyst_server.pl.
 
+Or you can use `starman` to start the app.
+
 ** License
 
 This software is licensed under the BSD clause 3 license. See License
